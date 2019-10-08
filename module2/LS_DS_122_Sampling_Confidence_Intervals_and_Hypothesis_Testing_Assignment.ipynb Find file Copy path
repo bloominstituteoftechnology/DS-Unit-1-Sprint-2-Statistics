@@ -1,0 +1,1269 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Copy of LS_DS_122_Sampling_Confidence_Intervals_and_Hypothesis_Testing_Assignment.ipynb",
+      "provenance": [],
+      "collapsed_sections": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "11OzdxWTM7UR",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Assignment - Build a confidence interval\n",
+        "\n",
+        "A confidence interval refers to a neighborhood around some point estimate, the size of which is determined by the desired p-value. For instance, we might say that 52% of Americans prefer tacos to burritos, with a 95% confidence interval of +/- 5%.\n",
+        "\n",
+        "52% (0.52) is the point estimate, and +/- 5% (the interval $[0.47, 0.57]$) is the confidence interval. \"95% confidence\" means a p-value $\\leq 1 - 0.95 = 0.05$.\n",
+        "\n",
+        "In this case, the confidence interval includes $0.5$ - which is the natural null hypothesis (that half of Americans prefer tacos and half burritos, thus there is no clear favorite). So in this case, we could use the confidence interval to report that we've failed to reject the null hypothesis.\n",
+        "\n",
+        "But providing the full analysis with a confidence interval, including a graphical representation of it, can be a helpful and powerful way to tell your story. Done well, it is also more intuitive to a layperson than simply saying \"fail to reject the null hypothesis\" - it shows that in fact the data does *not* give a single clear result (the point estimate) but a whole range of possibilities.\n",
+        "\n",
+        "How is a confidence interval built, and how should it be interpreted? It does *not* mean that 95% of the data lies in that interval - instead, the frequentist interpretation is \"if we were to repeat this experiment 100 times, we would expect the average result to lie in this interval ~95 times.\"\n",
+        "\n",
+        "For a 95% confidence interval and a normal(-ish) distribution, you can simply remember that +/-2 standard deviations contains 95% of the probability mass, and so the 95% confidence interval based on a given sample is centered at the mean (point estimate) and has a range of +/- 2 (or technically 1.96) standard deviations.\n",
+        "\n",
+        "Different distributions/assumptions (90% confidence, 99% confidence) will require different math, but the overall process and interpretation (with a frequentist approach) will be the same.\n",
+        "\n",
+        "Your assignment - using the data from the prior module ([congressional voting records](https://archive.ics.uci.edu/ml/datasets/Congressional+Voting+Records)):\n",
+        "\n",
+        "\n",
+        "### Confidence Intervals:\n",
+        "1. Generate and numerically represent a confidence interval\n",
+        "2. Graphically (with a plot) represent the confidence interval\n",
+        "3. Interpret the confidence interval - what does it tell you about the data and its distribution?\n",
+        "\n",
+        "### Chi-squared tests:\n",
+        "4. Take a dataset that we have used in the past in class that has **categorical** variables. Pick two of those categorical variables and run a chi-squared tests on that data\n",
+        "  - By hand using Numpy\n",
+        "  - In a single line using Scipy\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Ckcr4A4FM7cs",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 442
+        },
+        "outputId": "5a672bfb-3b3f-4970-9427-adf8b67e11cc"
+      },
+      "source": [
+        "# importing voting records\n",
+        "!wget https://archive.ics.uci.edu/ml/machine-learning-databases/voting-records/house-votes-84.data\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('house-votes-84.data', \n",
+        "                 header=None,\n",
+        "                 names=['party','handicapped-infants','water-project',\n",
+        "                          'budget','physician-fee-freeze', 'el-salvador-aid',\n",
+        "                          'religious-groups','anti-satellite-ban',\n",
+        "                          'aid-to-contras','mx-missile','immigration',\n",
+        "                          'synfuels', 'education', 'right-to-sue','crime','duty-free',\n",
+        "                          'south-africa'])\n",
+        "\n",
+        "import numpy as np\n",
+        "\n",
+        "df = df.replace({'?':np.NaN,'y':1,'n':0})\n",
+        "print(df.shape)\n",
+        "df.head()"
+      ],
+      "execution_count": 52,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "--2019-10-08 21:17:12--  https://archive.ics.uci.edu/ml/machine-learning-databases/voting-records/house-votes-84.data\n",
+            "Resolving archive.ics.uci.edu (archive.ics.uci.edu)... 128.195.10.252\n",
+            "Connecting to archive.ics.uci.edu (archive.ics.uci.edu)|128.195.10.252|:443... connected.\n",
+            "HTTP request sent, awaiting response... 200 OK\n",
+            "Length: 18171 (18K) [application/x-httpd-php]\n",
+            "Saving to: ‘house-votes-84.data.2’\n",
+            "\n",
+            "house-votes-84.data 100%[===================>]  17.75K  --.-KB/s    in 0.07s   \n",
+            "\n",
+            "2019-10-08 21:17:12 (269 KB/s) - ‘house-votes-84.data.2’ saved [18171/18171]\n",
+            "\n",
+            "(435, 17)\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>party</th>\n",
+              "      <th>handicapped-infants</th>\n",
+              "      <th>water-project</th>\n",
+              "      <th>budget</th>\n",
+              "      <th>physician-fee-freeze</th>\n",
+              "      <th>el-salvador-aid</th>\n",
+              "      <th>religious-groups</th>\n",
+              "      <th>anti-satellite-ban</th>\n",
+              "      <th>aid-to-contras</th>\n",
+              "      <th>mx-missile</th>\n",
+              "      <th>immigration</th>\n",
+              "      <th>synfuels</th>\n",
+              "      <th>education</th>\n",
+              "      <th>right-to-sue</th>\n",
+              "      <th>crime</th>\n",
+              "      <th>duty-free</th>\n",
+              "      <th>south-africa</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>republican</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>republican</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>democrat</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>democrat</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>democrat</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "        party  handicapped-infants  ...  duty-free  south-africa\n",
+              "0  republican                  0.0  ...        0.0           1.0\n",
+              "1  republican                  0.0  ...        0.0           NaN\n",
+              "2    democrat                  NaN  ...        0.0           0.0\n",
+              "3    democrat                  0.0  ...        0.0           1.0\n",
+              "4    democrat                  1.0  ...        1.0           1.0\n",
+              "\n",
+              "[5 rows x 17 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 52
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nCFlBqFQBfrp",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "#find the confidence interval     \n",
+        "from scipy import stats\n",
+        "\n",
+        "def confidence_interval(data, confidence):\n",
+        "  data = np.array(data)\n",
+        "  mean = np.nanmean(data)\n",
+        "  n = len(data) #n = sample size\n",
+        "  stderr = stats.sem(data,nan_policy='omit')\n",
+        "  margin = stderr * stats.t.ppf(((1 + confidence) / 2.0), (n-1))\n",
+        "  return mean, mean - margin, mean + margin"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hB55t5OVB_io",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 255
+        },
+        "outputId": "be6a8adf-cb6a-43c9-efd2-22415d8429e5"
+      },
+      "source": [
+        "dem = df[df['party']== 'democrat']\n",
+        "print(dem.shape)\n",
+        "dem.head()"
+      ],
+      "execution_count": 60,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "(267, 17)\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>party</th>\n",
+              "      <th>handicapped-infants</th>\n",
+              "      <th>water-project</th>\n",
+              "      <th>budget</th>\n",
+              "      <th>physician-fee-freeze</th>\n",
+              "      <th>el-salvador-aid</th>\n",
+              "      <th>religious-groups</th>\n",
+              "      <th>anti-satellite-ban</th>\n",
+              "      <th>aid-to-contras</th>\n",
+              "      <th>mx-missile</th>\n",
+              "      <th>immigration</th>\n",
+              "      <th>synfuels</th>\n",
+              "      <th>education</th>\n",
+              "      <th>right-to-sue</th>\n",
+              "      <th>crime</th>\n",
+              "      <th>duty-free</th>\n",
+              "      <th>south-africa</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>democrat</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>democrat</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>democrat</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>democrat</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>democrat</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>0.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "      party  handicapped-infants  water-project  ...  crime  duty-free  south-africa\n",
+              "2  democrat                  NaN            1.0  ...    1.0        0.0           0.0\n",
+              "3  democrat                  0.0            1.0  ...    0.0        0.0           1.0\n",
+              "4  democrat                  1.0            1.0  ...    1.0        1.0           1.0\n",
+              "5  democrat                  0.0            1.0  ...    1.0        1.0           1.0\n",
+              "6  democrat                  0.0            1.0  ...    1.0        1.0           1.0\n",
+              "\n",
+              "[5 rows x 17 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 60
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "RX56wTYaVawr",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "\n",
+        "def mean_confidence_interval(data, confidence=0.95):\n",
+        "    a = 1.0 * np.array(data)\n",
+        "    n = len(a)\n",
+        "    m, se = np.mean(a), stats.sem(a,nan_policy='omit')\n",
+        "    h = se * stats.t.ppf((1 + confidence) / 2., n-1)\n",
+        "    return m, m-h, m+h"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "58uyIqCkVd6B",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "415a7c97-857c-4c2e-d1fd-de4658ec37fd"
+      },
+      "source": [
+        "mean_confidence_interval(dem['mx-missile'],95)"
+      ],
+      "execution_count": 97,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(0.7752808988764045, nan, nan)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 97
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dHethBNDR9QA",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 269
+        },
+        "outputId": "204bb44a-a421-411b-9a3e-704725589270"
+      },
+      "source": [
+        "import seaborn as sns\n",
+        "from matplotlib import pyplot as plt\n",
+        "\n",
+        "sns.kdeplot(dem['water-project'])\n",
+        "CI = confidence_interval(dem['water-project'],95)\n",
+        "plt.axvline(x=CI[1], color='red')\n",
+        "plt.axvline(x=CI[2], color='red')\n",
+        "plt.axvline(x=CI[0], color='k');"
+      ],
+      "execution_count": 103,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "lqghivTRZd1M",
+        "colab_type": "text"
+      },
+      "source": [
+        "part2 chi test "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "CRtpd0aIZiCU",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "d1d47429-09da-4f53-adfd-4c88fc30e580"
+      },
+      "source": [
+        "!wget https://archive.ics.uci.edu/ml/machine-learning-databases/car/car.data\n"
+      ],
+      "execution_count": 105,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "--2019-10-08 22:06:34--  https://archive.ics.uci.edu/ml/machine-learning-databases/car/car.data\n",
+            "Resolving archive.ics.uci.edu (archive.ics.uci.edu)... 128.195.10.252\n",
+            "Connecting to archive.ics.uci.edu (archive.ics.uci.edu)|128.195.10.252|:443... connected.\n",
+            "HTTP request sent, awaiting response... 200 OK\n",
+            "Length: 51867 (51K) [application/x-httpd-php]\n",
+            "Saving to: ‘car.data’\n",
+            "\n",
+            "car.data            100%[===================>]  50.65K  --.-KB/s    in 0.1s    \n",
+            "\n",
+            "2019-10-08 22:06:35 (394 KB/s) - ‘car.data’ saved [51867/51867]\n",
+            "\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3YgnLC6OaPTO",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "473ea41a-5391-431b-88d7-d234dd655089"
+      },
+      "source": [
+        "\n",
+        "car_header = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'class_value']\n",
+        "car_df = pd.read_csv('car.data',names=car_header)\n",
+        "car_df = car_df.drop(columns=['class_value'])\n",
+        "car_df.head()"
+      ],
+      "execution_count": 116,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>buying</th>\n",
+              "      <th>maint</th>\n",
+              "      <th>doors</th>\n",
+              "      <th>persons</th>\n",
+              "      <th>lug_boot</th>\n",
+              "      <th>safety</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "      <td>small</td>\n",
+              "      <td>low</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "      <td>small</td>\n",
+              "      <td>med</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "      <td>small</td>\n",
+              "      <td>high</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "      <td>med</td>\n",
+              "      <td>low</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>vhigh</td>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "      <td>med</td>\n",
+              "      <td>med</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "  buying  maint doors persons lug_boot safety\n",
+              "0  vhigh  vhigh     2       2    small    low\n",
+              "1  vhigh  vhigh     2       2    small    med\n",
+              "2  vhigh  vhigh     2       2    small   high\n",
+              "3  vhigh  vhigh     2       2      med    low\n",
+              "4  vhigh  vhigh     2       2      med    med"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 116
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "srJyv-19dOVH",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "ca90d634-54ed-4bfa-8903-e57a621cc7de"
+      },
+      "source": [
+        "car_df.shape"
+      ],
+      "execution_count": 117,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(1728, 6)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 117
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "T8BTm_72bBWJ",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 173
+        },
+        "outputId": "dabac601-a375-496a-fc4a-0f3e5899198e"
+      },
+      "source": [
+        "car_df.describe(exclude='number')"
+      ],
+      "execution_count": 110,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>buying</th>\n",
+              "      <th>maint</th>\n",
+              "      <th>doors</th>\n",
+              "      <th>persons</th>\n",
+              "      <th>lug_boot</th>\n",
+              "      <th>safety</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>1728</td>\n",
+              "      <td>1728</td>\n",
+              "      <td>1728</td>\n",
+              "      <td>1728</td>\n",
+              "      <td>1728</td>\n",
+              "      <td>1728</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>unique</th>\n",
+              "      <td>4</td>\n",
+              "      <td>4</td>\n",
+              "      <td>4</td>\n",
+              "      <td>3</td>\n",
+              "      <td>3</td>\n",
+              "      <td>3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>top</th>\n",
+              "      <td>med</td>\n",
+              "      <td>med</td>\n",
+              "      <td>4</td>\n",
+              "      <td>4</td>\n",
+              "      <td>med</td>\n",
+              "      <td>med</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>freq</th>\n",
+              "      <td>432</td>\n",
+              "      <td>432</td>\n",
+              "      <td>432</td>\n",
+              "      <td>576</td>\n",
+              "      <td>576</td>\n",
+              "      <td>576</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "       buying maint doors persons lug_boot safety\n",
+              "count    1728  1728  1728    1728     1728   1728\n",
+              "unique      4     4     4       3        3      3\n",
+              "top       med   med     4       4      med    med\n",
+              "freq      432   432   432     576      576    576"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 110
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6pQo-562bdIr",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 235
+        },
+        "outputId": "808a476c-e383-4806-f9ad-44958b6e65a1"
+      },
+      "source": [
+        "contin_table = pd.crosstab(car_df['buying'],car_df['safety'],margins=True)\n",
+        "contin_table"
+      ],
+      "execution_count": 120,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th>safety</th>\n",
+              "      <th>high</th>\n",
+              "      <th>low</th>\n",
+              "      <th>med</th>\n",
+              "      <th>All</th>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>buying</th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>high</th>\n",
+              "      <td>144</td>\n",
+              "      <td>144</td>\n",
+              "      <td>144</td>\n",
+              "      <td>432</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>low</th>\n",
+              "      <td>144</td>\n",
+              "      <td>144</td>\n",
+              "      <td>144</td>\n",
+              "      <td>432</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>med</th>\n",
+              "      <td>144</td>\n",
+              "      <td>144</td>\n",
+              "      <td>144</td>\n",
+              "      <td>432</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>vhigh</th>\n",
+              "      <td>144</td>\n",
+              "      <td>144</td>\n",
+              "      <td>144</td>\n",
+              "      <td>432</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>All</th>\n",
+              "      <td>576</td>\n",
+              "      <td>576</td>\n",
+              "      <td>576</td>\n",
+              "      <td>1728</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "safety  high  low  med   All\n",
+              "buying                      \n",
+              "high     144  144  144   432\n",
+              "low      144  144  144   432\n",
+              "med      144  144  144   432\n",
+              "vhigh    144  144  144   432\n",
+              "All      576  576  576  1728"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 120
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kLTiT0RJd417",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "1f3d79d4-6d45-45c0-945b-431aec0b3395"
+      },
+      "source": [
+        "buying_high = contin_table.iloc[0][0:3].values\n",
+        "buying_high"
+      ],
+      "execution_count": 122,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([144, 144, 144])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 122
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "H1L75QxdeU_n",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "2b595d07-1bd2-4b05-eb96-0cd3f42bd675"
+      },
+      "source": [
+        "buying_low = contin_table.iloc[2][0:3].values\n",
+        "buying_low"
+      ],
+      "execution_count": 123,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([144, 144, 144])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 123
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "XxnirmQ-hESB",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 51
+        },
+        "outputId": "3ea26745-d959-4d5d-f166-dffc740142b7"
+      },
+      "source": [
+        "row_sums = contin_table.iloc[0:4, 3].values\n",
+        "col_sums = contin_table.iloc[4, 0:3].values\n",
+        "\n",
+        "print(row_sums)\n",
+        "print(col_sums)"
+      ],
+      "execution_count": 125,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[432 432 432 432]\n",
+            "[576 576 576]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Ibky6JcShhTi",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "35427fe0-c770-4c47-de08-d9a9bc584c50"
+      },
+      "source": [
+        "total = contin_table.loc['All','All']\n",
+        "total"
+      ],
+      "execution_count": 126,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1728"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 126
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "wEz4cOOWhrEi",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 102
+        },
+        "outputId": "946193a7-67d4-4149-b13f-a08311e2d055"
+      },
+      "source": [
+        "expected = []\n",
+        "for i in range(len(row_sums)):\n",
+        "  expected_row = []\n",
+        "  for column in col_sums:\n",
+        "    expected_val = column*row_sums[i]/total\n",
+        "    expected_row.append(expected_val)\n",
+        "  expected.append(expected_row)\n",
+        "  \n",
+        "\n",
+        "expected = np.array(expected)\n",
+        "print(expected.shape)  \n",
+        "print(expected)"
+      ],
+      "execution_count": 127,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "(4, 3)\n",
+            "[[144. 144. 144.]\n",
+            " [144. 144. 144.]\n",
+            " [144. 144. 144.]\n",
+            " [144. 144. 144.]]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PzwSXxYEiFQe",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 102
+        },
+        "outputId": "3e797a30-75b1-4698-af72-e8614af218a0"
+      },
+      "source": [
+        "observed = pd.crosstab(car_df['buying'], car_df['safety']).values\n",
+        "print(observed.shape)\n",
+        "observed"
+      ],
+      "execution_count": 129,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "(4, 3)\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[144, 144, 144],\n",
+              "       [144, 144, 144],\n",
+              "       [144, 144, 144],\n",
+              "       [144, 144, 144]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 129
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "mGNV58RSiYdA",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "d494321d-8e20-421d-e8b0-2d2e5e5aa028"
+      },
+      "source": [
+        "# Array broadcasting will work with numpy arrays but not python lists\n",
+        "chi_squared = ((observed - expected)**2/(expected)).sum() \n",
+        "print(f\"Chi-Squared: {chi_squared}\")"
+      ],
+      "execution_count": 130,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Chi-Squared: 0.0\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ZclBbJIvig2h",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "673b4aad-f967-4769-f52f-865bdafd1fdf"
+      },
+      "source": [
+        "# Calculate Degrees of Freedom\n",
+        "dof = (len(row_sums)-1)*(len(col_sums)-1)\n",
+        "print(f\"Degrees of Freedom: {dof}\")   "
+      ],
+      "execution_count": 131,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Degrees of Freedom: 6\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "4ohsJhQUmEuS",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Stretch goals:\n",
+        "\n",
+        "1. Write a summary of your findings, mixing prose and math/code/results. *Note* - yes, this is by definition a political topic. It is challenging but important to keep your writing voice *neutral* and stick to the facts of the data. Data science often involves considering controversial issues, so it's important to be sensitive about them (especially if you want to publish).\n",
+        "2. Apply the techniques you learned today to your project data or other data of your choice, and write/discuss your findings here.\n",
+        "3. Refactor your code so it is elegant, readable, and can be easily run for all issues."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kVOCwfTfZf8l",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "nyJ3ySr7R2k9",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Resources\n",
+        "\n",
+        "- [Interactive visualize the Chi-Squared test](https://homepage.divms.uiowa.edu/~mbognar/applets/chisq.html)\n",
+        "- [Calculation of Chi-Squared test statistic](https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test)\n",
+        "- [Visualization of a confidence interval generated by R code](https://commons.wikimedia.org/wiki/File:Confidence-interval.svg)\n",
+        "- [Expected value of a squared standard normal](https://math.stackexchange.com/questions/264061/expected-value-calculation-for-squared-normal-distribution) (it's 1 - which is why the expected value of a Chi-Squared with $n$ degrees of freedom is $n$, as it's the sum of $n$ squared standard normals)"
+      ]
+    }
+  ]
+}
