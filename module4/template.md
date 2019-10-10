@@ -40,7 +40,7 @@ working on for your project week.
 
 
 
-# Ideas for data storytelling - How likely are you to die?
+# Idea 1 for data storytelling - How likely are you to die?
 
 ## Seven templates
 
@@ -101,7 +101,7 @@ http://wonder.cdc.gov/cmf-icd10.html
 ---
 
 
-# Ideas for data storytelling - Idea 2
+# Idea 2 for data storytelling - EVE Online Stuff
 
 ## Seven templates
 
