@@ -68,10 +68,10 @@ There are very many aspects to healthcare spending to explore. Once I have a gre
 ## Data
 
 *Where could you search for data about your topic?*
-https://www.statista.com
-https://datacenter.commonwealthfund.org
-https://www.who.int/gho/en/
-https://stats.oecd.org/Index.aspx?DataSetCode=SHA#
+- https://www.statista.com
+- https://datacenter.commonwealthfund.org
+- https://www.who.int/gho/en/
+- https://stats.oecd.org/Index.aspx?DataSetCode=SHA#
 ---
 
 # Ideas for data storytelling - Idea 2
