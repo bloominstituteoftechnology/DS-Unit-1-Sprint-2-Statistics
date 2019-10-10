@@ -8,35 +8,35 @@ working on for your project week.
 ## Options
 
 ### What do you care about?
--Art
--Video games
--Stories
--Guns
--EMS
--AI and the progress toward AGI
--Infosec
--Computer Hardware
--Computer Software
--Drones
--Rock climbing
+- Art
+- Video games
+- Stories
+- Guns
+- EMS
+- AI and the progress toward AGI
+- Infosec
+- Computer Hardware
+- Computer Software
+- Drones
+- Rock climbing
 
 ### What do you know about?
--Video games
--Stories
--Guns
--EMS
--Computer Hardware
+- Video games
+- Stories
+- Guns
+- EMS
+- Computer Hardware
 
 ### What decisions do you face?
--Where to go in the world
--What to do
--How to get there
+- Where to go in the world
+- What to do
+- How to get there
 
 ### What do you want to know about based on these?
--Art: How long it takes to become a good artist by time spent woprking on it (Probably just the 10,000hrs thing as usual)
--Video Games: Something with EVE Online? It's usually a great start for data. What's the spread of gamers across different genres? RPG, FPS, RTS, Puzzler, Side-Scroller, etc. (Probably something already out there on that, and also difficult to get data on that)
--Stories: Spread of genre's against the population? (Really not sure with this one)
--Guns: Do more guns = more crime? How likely are you to die to guns vs anything else? How likely are you to die in general? (Last one is probably the most formed idea I have for this so far)
+- Art: How long it takes to become a good artist by time spent woprking on it (Probably just the 10,000hrs thing as usual)
+- Video Games: Something with EVE Online? It's usually a great start for data. What's the spread of gamers across different genres? RPG, FPS, RTS, Puzzler, Side-Scroller, etc. (Probably something already out there on that, and also difficult to get data on that)
+- Stories: Spread of genre's against the population? (Really not sure with this one)
+- Guns: Do more guns = more crime? How likely are you to die to guns vs anything else? How likely are you to die in general? (Last one is probably the most formed idea I have for this so far)
 
 
 
