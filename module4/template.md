@@ -78,13 +78,13 @@ Where could you search for data about your topic?
 ## You
 
 What do you care about?
-
+*Wittgenstein's Tractatus*
 
 What do you know about?
-
+*The general structure of how the chapters are laid out*
 
 What decisions do you face?
-
+*Is there a hidden pattern to the structure of the Tractatus?*
 
 ## Seven templates
 
@@ -93,45 +93,46 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+*NEWP*
 
 2. Trend related to the news
-
+*NEWP*
 
 3. Who does that?
-
+*NEWP*
 
 4. Answering a question people care about
-
+*NEWP*
 
 5. Valuable to businesses
-
+*NEWP*
 
 6. What's the most popular?
-
+*NEWP*
 
 7. Cost/Money rankings
-
+*NEWP*
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+*That it is meaningless or inconsequential.*
 
 ## Examples
 
 What data storytelling example inspires you?
-
+*[Tacos vs transit](https://cdn.theatlantic.com/assets/media/img/posts/2018/12/tacos_vs_transit_major_cities/44577a9f0.png), for demonstrating that suprising combinations of features can still be arranged in an informative way.*
 
 Could you do a new hypothesis, for the same question?
-
+*There is/is not a common distribution for the "samples" of section numbers.*
 
 Could you do a new question, for the same topic?
-
+*How are certain keywords distributed through the text?*
 
 Could you do a new topic, with the same "style"?
-
+*Ask a similar question of an arbitrary text's table of contents*
 
 ## Data
 
 Where could you search for data about your topic?
+*AT THE LIBRARY*
