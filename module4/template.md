@@ -55,7 +55,7 @@ What misconceptions do people have about your topic?
 ## Examples
 
 What data storytelling example inspires you?
-https://medium.com/@daniel_carter/is-buy-and-hold-a-good-investment-strategy-fe2d43266bb5 for the way he explains his methodology and what those choices mean
+*[Is 'Buy and Hold' a Good Investment Strategy?](https://medium.com/@daniel_carter/is-buy-and-hold-a-good-investment-strategy-fe2d43266bb5) for the way he explains his methodology and what those choices mean.*
 
 Could you do a new hypothesis, for the same question?
 *Passing performance is more impacted by geography (ie, lat-long) than being outdoors.*
