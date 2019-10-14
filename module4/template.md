@@ -7,15 +7,20 @@ working on for your project week.
 
 
 # Ideas for data storytelling - Idea 1
-
+Something with movies, thinking like Oscar/award wins vs public opinion like rotten tomatoes or IMDb ratings
 ## You
 
 What do you care about?
-
+-Movies
+-Running/Fitness
+-Nutrition
+-Travel
+-Sports
 
 What do you know about?
-
-
+-Customer service
+-Auto Insurance and repairs
+-list above
 What decisions do you face?
 
 
@@ -28,22 +33,26 @@ Can you apply the templates to your topics?
 1. Geographic Variation
 
 
+
 2. Trend related to the news
 
 
 3. Who does that?
+Demographics for theater viewings/ratings 
 
 
 4. Answering a question people care about
+Do awards reflect popular opinion
 
 
 5. Valuable to businesses
 
 
 6. What's the most popular?
-
+Something about super hero movies?
 
 7. Cost/Money rankings
+Movie budgets vs sales 
 
 
 ## Misconceptions
