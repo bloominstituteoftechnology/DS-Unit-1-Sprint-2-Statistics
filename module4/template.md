@@ -15,10 +15,12 @@ Finance, Surfing
 
 
 What do you know about?
+
 401ks, maximizing savings, trends of markets and funds
 surfboard desing, swell reading, wave reading, finding quality waves
 
 What decisions do you face?
+
 how much to save every month
 what amount is ok to spend per month or year
 how much would i need to support my self per month or year during retirement 
