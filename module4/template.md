@@ -11,13 +11,16 @@ working on for your project week.
 ## You
 
 What do you care about?
-
+Mountian Biking 
+Ham Radio
 
 What do you know about?
-
+biking trails
+Frequencies for transmission
 
 What decisions do you face?
-
+Which trial to ride,
+Who is in range
 
 ## Seven templates
 
@@ -26,35 +29,40 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+  Trials in Area
+  Available repeaters
 
 2. Trend related to the news
 
 
 3. Who does that?
-
+  Many bikers
+  ham radio operators
 
 4. Answering a question people care about
-
+  How the trails are in the area
+  How avaiable repeaters are 
 
 5. Valuable to businesses
 
 
 6. What's the most popular?
-
+  
 
 7. Cost/Money rankings
-
+  Trail mantenience
+  Repeater mantenince
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+  Who uses trails
+  How useful repeaters are
 
 ## Examples
 
 What data storytelling example inspires you?
-
+  
 
 Could you do a new hypothesis, for the same question?
 
