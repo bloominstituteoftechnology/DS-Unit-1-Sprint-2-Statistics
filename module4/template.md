@@ -5,8 +5,7 @@ working on for your project week.
 
 # Ideas 1 for data storytelling : Finance
 
-## You
-
+## Mehdi 
 I care about Finance and how the avergae person develeop wealth during a period of time. 
 
 
@@ -153,4 +152,4 @@ Could you do a new topic, with the same "style"?
 
 ## Data
 
-Where could you search for data about your topic?
+Data.gov 
