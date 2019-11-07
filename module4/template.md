@@ -76,13 +76,13 @@ I've found a way of scraping NBA.com
 ## You
 
 What do you care about?
-
+Rocket League.
 
 What do you know about?
-
+Data Analysis
 
 What decisions do you face?
-
+How to teach a player what the people ranked just above them are doing that the player is not.
 
 ## Seven templates
 
@@ -94,13 +94,13 @@ Can you apply the templates to your topics?
 
 
 2. Trend related to the news
-
+The Rocket League World Championship is coming up.
 
 3. Who does that?
-
+There are 22 million unique Rocket League accounts and fewer than 1% have reached the top rank.
 
 4. Answering a question people care about
-
+How do I know what to do to improve?
 
 5. Valuable to businesses
 
@@ -114,22 +114,23 @@ Can you apply the templates to your topics?
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+Advice tends to simplify broad topics into single-sentence tips.
 
 ## Examples
 
 What data storytelling example inspires you?
-
+The data collected by calculated.gg which does a descriptive analysis of game replays.
 
 Could you do a new hypothesis, for the same question?
-
+I could present the same data with deeper analysis.
 
 Could you do a new question, for the same topic?
-
+My questions could be which values are related and most important when looking at differences between player-ranking tiers.
 
 Could you do a new topic, with the same "style"?
-
+I could offer an interpretation of the data with more of a focus on explanation and theory-crafting than the dry presentation offered at calculated.gg
 
 ## Data
 
 Where could you search for data about your topic?
+I'm looking at scraping data directly from calculated.gg
