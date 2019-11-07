@@ -11,12 +11,19 @@ working on for your project week.
 ## You
 
 What do you care about?
-
+Cyber bully
 
 What do you know about?
 
 
 What decisions do you face?
+Is cyper bully become a bigger issue in people's life
+
+the growth of internet bully case from time to time
+kids or adults,who will have more rate of the cyper bully.
+who get more bully compare with female and male.
+the law growth of cyper bully
+cyper bully contrbute to mental health
 
 
 ## Seven templates
@@ -29,13 +36,13 @@ Can you apply the templates to your topics?
 
 
 2. Trend related to the news
-
+   one korea calbrty took her life,one of the reason is cyber bully
 
 3. Who does that?
 
 
 4. Answering a question people care about
-
+will real name systerm help decrease the cyber bullying
 
 5. Valuable to businesses
 
