@@ -34,12 +34,12 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
-
+ whole country
 2. Trend related to the news
    one korea calbrty took her life,one of the reason is cyber bully
 
 3. Who does that?
-
+ It could be everybody
 
 4. Answering a question people care about
 will real name systerm help decrease the cyber bullying
@@ -56,11 +56,12 @@ will real name systerm help decrease the cyber bullying
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+cyper bully is not a big problem.
 
 ## Examples
 
 What data storytelling example inspires you?
+How Seattle Residents Determine Housing
 
 
 Could you do a new hypothesis, for the same question?
