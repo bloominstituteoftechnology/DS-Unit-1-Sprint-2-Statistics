@@ -121,17 +121,18 @@ Mostly about diet stuff, pretty sure everyone knows that being fat makes life ha
 ## Examples
 
 What data storytelling example inspires you?
-
+The book The Case Against Sugar 
 
 Could you do a new hypothesis, for the same question?
-
+Ya, probably on insulin levels/glycemic index
 
 Could you do a new question, for the same topic?
-
+On related things like heart disease rates, hypertension, 
 
 Could you do a new topic, with the same "style"?
-
+Ya lots of interesting health stuff.
 
 ## Data
 
 Where could you search for data about your topic?
+Index of Case Against Sugar would be a good start
