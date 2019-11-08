@@ -81,7 +81,7 @@ What do you care about?
 Obesity/health
 
 What do you know about?
-Getting stronger but not losing fat easily, yet.
+Getting stronger but not losing fat easily, yet. Biology, but about digestion yet.
 
 What decisions do you face?
 How do I get back into shape ASAP?
@@ -93,30 +93,30 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+Obesity rates by geography (done to death by country, maybe we can do by rural vs city or at a county/town level)
 
 2. Trend related to the news
-
+When is this not in the news.
 
 3. Who does that?
-
+Everyone in developing countries is becoming fatter afaik.
 
 4. Answering a question people care about
 Do women really live slightly longer than men if they are equally healthy? Since men seem to care less about their health in every culture I've ever witnessed/let themselves go more.
 
 5. Valuable to businesses
-
+What's the true cost of obesity? Why should you stop stocking snacks in the office? What's the hidden cost?
 
 6. What's the most popular?
 
 
 7. Cost/Money rankings
-
+Hidden costs of cheap processed foods? Obesity/dollars lost in productivity?
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+Mostly about diet stuff, pretty sure everyone knows that being fat makes life harder and more unpleasant.
 
 ## Examples
 
