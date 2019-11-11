@@ -89,7 +89,7 @@ What do you know about?
 a lot of brands names
 
 What decisions do you face?
-The product got most reviews has most positive reviews.
+how one of the skin product become most popular in amazon.
 
 ## Seven templates
 
@@ -113,14 +113,14 @@ best skin product in amazon
 
 6. What's the most popular?
 
-which one is sold most and get most reviews.
+which one is sold most and get most reviews, through the year did they change.
 7. Cost/Money rankings
 which one will be more expensive among the most review products
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-most reviews products got most sales
+The ranking is always same 
 
 ## Examples
 
