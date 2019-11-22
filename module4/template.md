@@ -8,16 +8,16 @@ working on for your project week.
 
 # Ideas for data storytelling - Idea 1
 
-## You
+## Richard Olson
 
 What do you care about?
-
+I care about sports and health
 
 What do you know about?
-
+I know about health and fitness
 
 What decisions do you face?
-
+How to be healthy with a desk job
 
 ## Seven templates
 
