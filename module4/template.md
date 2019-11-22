@@ -157,4 +157,4 @@ Could you do a new topic, with the same "style"?
 
 Where could you search for data about your topic?
 
-For the Sports one I could find a data set of all the nba teams
+For the Sports one I found a data set of all the players in the nba and where they went to college 
