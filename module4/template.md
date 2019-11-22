@@ -36,6 +36,7 @@ Can you apply the templates to your topics?
 
 4. Answering a question people care about
 
+Maybe do this what type of businesses use health care more
 
 5. Valuable to businesses
 
@@ -50,6 +51,7 @@ Can you apply the templates to your topics?
 
 What misconceptions do people have about your topic?
 
+Could be construction workers see health care providers more
 
 ## Examples
 
