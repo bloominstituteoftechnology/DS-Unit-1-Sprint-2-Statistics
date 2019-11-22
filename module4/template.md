@@ -13,7 +13,7 @@ working on for your project week.
 What do you care about? BIKES!!
 
 
-What do you know about?
+What do you know about? 
 
 
 What decisions do you face?
