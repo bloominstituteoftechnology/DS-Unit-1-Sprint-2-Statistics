@@ -11,9 +11,11 @@ working on for your project week.
 ## You
 
 What do you care about?
+
 Dogs/Erradicating depression
 
 What do you know about?
+
 League of Legends/esports
 
 What decisions do you face?
@@ -26,6 +28,7 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
+
 Effect of geographic location on skill
 
 2. Trend related to the news
@@ -35,6 +38,7 @@ Effect of geographic location on skill
 
 
 4. Answering a question people care about
+
 Will NA ever win worlds?
 
 5. Valuable to businesses
@@ -49,6 +53,7 @@ Will NA ever win worlds?
 ## Misconceptions
 
 What misconceptions do people have about your topic?
+
 You cannot make a living playing video games
 
 ## Examples
@@ -68,7 +73,9 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
 https://www.kaggle.com/chuckephron/leagueoflegends#LeagueofLegends.csv
+
 https://datasetsearch.research.google.com/
 
 ---
@@ -78,9 +85,11 @@ https://datasetsearch.research.google.com/
 ## You
 
 What do you care about?
+
 Dogs/Erradicating depression
 
 What do you know about?
+
 League of Legends/esports
 
 What decisions do you face?
@@ -93,6 +102,7 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
+
 Effect of geographical location on depression
 
 2. Trend related to the news
@@ -116,6 +126,7 @@ Effect of geographical location on depression
 ## Misconceptions
 
 What misconceptions do people have about your topic?
+
 Depression only affects women
 
 ## Examples
@@ -135,6 +146,8 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
 https://data.gov.uk/dataset/6e8af848-595a-4edb-ac85-8bcc4fd54dfa/national-clinical-audit-of-anxiety-and-depression-core-audit
+
 https://datasetsearch.research.google.com/
 
