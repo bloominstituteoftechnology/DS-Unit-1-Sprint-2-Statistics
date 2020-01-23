@@ -10,8 +10,10 @@ working on for your project week.
 
 ## You
 
-What do you care about?
-
+<strong>What do you care about?</strong>
+<p>
+<h3>Thing 1</h3>
+</p>
 
 What do you know about?
 
