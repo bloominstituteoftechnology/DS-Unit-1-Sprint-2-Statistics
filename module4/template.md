@@ -15,7 +15,7 @@ What do you care about?
 
 What do you know about?
 
-Colleges and their mean's 
+Colleges and their salary mean's 
 
 What decisions do you face?
 
