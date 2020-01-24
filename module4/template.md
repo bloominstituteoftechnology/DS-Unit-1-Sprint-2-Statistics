@@ -86,6 +86,7 @@ What do you care about?
 
 What do you know about?
 
+The certain types of crimes happening in certain areas in England and Wales.
 
 What decisions do you face?
 
@@ -97,7 +98,7 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+The police areas/region
 
 2. Trend related to the news
 
@@ -108,11 +109,13 @@ Can you apply the templates to your topics?
 4. Answering a question people care about
 
 
+
 5. Valuable to businesses
 
 
 6. What's the most popular?
 
+Type of crime that has the highest rate
 
 7. Cost/Money rankings
 
@@ -121,6 +124,7 @@ Can you apply the templates to your topics?
 
 What misconceptions do people have about your topic?
 
+x crime happens more than y crime
 
 ## Examples
 
@@ -130,8 +134,10 @@ What data storytelling example inspires you?
 Could you do a new hypothesis, for the same question?
 
 
+
 Could you do a new question, for the same topic?
 
+Is there a time frame where more crimes occur?
 
 Could you do a new topic, with the same "style"?
 
@@ -139,3 +145,4 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+https://www.kaggle.com/r3w0p4/recorded-crime-data-at-police-force-area-level
