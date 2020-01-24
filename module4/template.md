@@ -148,3 +148,8 @@ I think several topics would fit well under the style/direction I talked about i
 
 Where could you search for data about your topic?
 Conservation organizations
+
+
+
+## Compare and Contrast, Selection
+I worry about the availability of fitness tracking data. I think this stuff will likely be proprietary. I think I might have better chances with conservation-related data. I need to see what's out there first. But for now, I am leaning towards my second option.
