@@ -103,7 +103,7 @@ Do income share agreements have bipartisan support?
 Do traditional or non traditional students receive more aid?
 
 5. Valuable to businesses
-Does employer student loan repayment increase retention rate?
+Does employer help with student loan repayment increase retention rates?
 
 6. What's the most popular?
 Are universities or community college enrollment rates greater?
@@ -133,3 +133,7 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+https://collegescorecard.ed.gov/data/
+https://www.bls.gov/cex/tables.htm#annual
+https://www.census.gov/search-results.html?stateGeo=none&q=debt&searchtype=web
+https://nces.ed.gov/
