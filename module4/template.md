@@ -30,13 +30,12 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation 
-Data collected from space can be useful for geographic data, especially related to climate.
+  a) Data collected from space can be useful for geographic data, especially related to climate.
 
 2. Trend related to the news 
-People seem to be very interested in companies like SpaceX lately. 
+  a) People seem to be very interested in companies like SpaceX lately. 
 
-3. Who does that?
-
+3. Who does that? - Can't see how it's applicable. 
 
 4. Answering a question people care about
 
