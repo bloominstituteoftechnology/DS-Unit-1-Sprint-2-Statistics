@@ -11,6 +11,7 @@ working on for your project week.
 ## You
 
 What do you care about?
+I live in Chicago. I care about safety. 
 
 
 What do you know about?
@@ -68,6 +69,7 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+I used data.world(https://data.world/publicsafety/chicago-crime) and chicago data portal(https://data.cityofchicago.org/Public-Safety/Crimes-2018/3i3m-jwuy)
 
 ---
 
