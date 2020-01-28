@@ -11,6 +11,7 @@ working on for your project week.
 ## You
 
 What do you care about?
+I live in Chicago. I care about safety. 
 
 
 What do you know about?
