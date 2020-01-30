@@ -6,45 +6,25 @@ Then compare and contrast and select one as the idea you're leaning towards
 working on for your project week.
 
 
-# Ideas for data storytelling - Idea 1
+# Idea for data storytelling:
+# Price Discrimination and Profitability at a Self-Service Automobile Recyling Yard
 
 ## You
 
-What do you care about?
-Intuition, gut feelings, hunches - fast thinking, System 1 thinking, rapid cognition
-Small business
-Use of data in small business
-Statistics
-North American archaeology
-Education
-Artificial intelligence
-Demographics, especially fertility rates
-The end of civilization
-Theology
-Loving my neighbor as myself
-Bringing others to Christ
-Perfecting the Saints
-Serving others
+### What do you care about?
+Proving that data can be important even in very old-school businesses, such as fast-food restaurants, citrus farming, and self-service automobile recycling (also known as junkyards)
 
 What do you know about?
-Document management, entrepreneurship
-Religions of the world
-Christianity
-Hero's Journey
-Self-reliance
-Developmental cognitive neuroscience
-Software management
-Kombucha home brewing
-Sourdough baking
-Small-scale solar power plants
-Rucking
+Operations at Nevada and Utah Pic-A-Parts, Sun Pacific, and Stewart Restaurant Group
+Ownership, management, and possession dynamics at the above
+Software used at the above
 
-What decisions do you face?
-How to get Blnqr written
-Finding a job
-How to become a great data scientist
-Should we move? if so, where?
-What path can take me to writing a book. Working title: "Artificial Intelligence and the Gospel of Jesus Christ"
+What decisions do they face?
+Whether to invest in solutions to collect and analyze data
+Whether to invest in IT at all
+How to price their products
+What product mix to produce and sell
+How to invest in advertising
 
 ## Seven templates
 
@@ -120,12 +100,39 @@ My own website
 ## You
 
 What do you care about?
-
+Intuition, gut feelings, hunches - fast thinking, System 1 thinking, rapid cognition
+Statistics
+North American archaeology
+Education
+Artificial intelligence
+Demographics, especially fertility rates
+The end of civilization
+Theology
+Loving my neighbor as myself
+Bringing others to Christ
+Perfecting the Saints
+Serving others
 
 What do you know about?
+Document management, entrepreneurship
+Religions of the world
+Christianity
+Hero's Journey
+Self-reliance
+Developmental cognitive neuroscience
+Software management
+Kombucha home brewing
+Sourdough baking
+Small-scale solar power plants
+Rucking
 
 
 What decisions do you face?
+How to get Blnqr written
+Finding a job
+How to become a great data scientist
+Should we move? if so, where?
+What path can take me to writing a book. Working title: "Artificial Intelligence and the Gospel of Jesus Christ"
 
 
 ## Seven templates
