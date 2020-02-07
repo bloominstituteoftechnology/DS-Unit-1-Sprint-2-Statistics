@@ -12,11 +12,14 @@ working on for your project week.
 
 What do you care about?
 
+The large number of immigrants entering the United States every year.
 
 What do you know about?
 
+Immigration is a transforming force, which produces profound and unforeseen social changes both in the societies of origin and in the host societies, in the relations between the various groups within the host societies and between immigrants themselves and their own Descendants. Immigration is accompanied not only by immigrant acculturation processes, but also by political measures by states to control their waves. Every year the number increases extraordinarily and the government tries in every way to retain this increase.
 
 What decisions do you face?
+
 
 
 ## Seven templates
@@ -26,19 +29,26 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+* united states population born abroad
+* which cities group the largest number of immigrants.
 
 2. Trend related to the news
 
+Nearly 14% of the current U.S. population was born abroad. The percentage represents a sharp increase compared to the historical low recorded in 1970, when it reached less than 5%, but it is approximately the same that prevailed from 1870 to 1910.
 
 3. Who does that?
 
+American Community Survey 2000-17, Gibson e Jung 1850-1990.
 
 4. Answering a question people care about
 
+The drop in the birth rate among the natives.
+In contrast, the immigrant population and their children continued to grow.
 
 5. Valuable to businesses
 
+Immigrants contribute directly to economic growth - increasing population and demand for goods and services.
+Immigrants are more likely to have a master's or doctorate than the children of native parents.
 
 6. What's the most popular?
 
