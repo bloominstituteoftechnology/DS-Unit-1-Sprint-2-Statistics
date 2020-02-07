@@ -78,13 +78,15 @@ Where could you search for data about your topic?
 ## You
 
 What do you care about?
-
+- I care about basing decision making on data. I am interested in the field of finance as well as business operations.
 
 What do you know about?
+- I have a background in banking and the experience and knowledge I have gained over the years have helped me gain
+an understanding of business, finance and economics in general.
 
 
 What decisions do you face?
-
+- The biggest decision I face at the moment is trying to decide a specific topic to use for a data science topic.
 
 ## Seven templates
 
@@ -93,25 +95,25 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+ - Yes
 
 2. Trend related to the news
-
+ - Yes
 
 3. Who does that?
-
+ - Yes
 
 4. Answering a question people care about
-
+ - Yes
 
 5. Valuable to businesses
-
+ - Yes
 
 6. What's the most popular?
-
+ - Yes
 
 7. Cost/Money rankings
-
+ - Yes
 
 ## Misconceptions
 
