@@ -11,14 +11,14 @@ working on for your project week.
 ## You
 
 What do you care about?
-I care about basing decision making on data. I am interested in the field of finance as well as business operations.
+- I care about basing decision making on data. I am interested in the field of finance as well as business operations.
 
 What do you know about?
-I have a background in banking and the experience and knowledge I have gained over the years have helped me gain
+- I have a background in banking and the experience and knowledge I have gained over the years have helped me gain
 an understanding of business, finance and economics in general.
 
 What decisions do you face?
-The biggest decision I face at the moment is trying to decide a specific topic to use for a data science topic. I have
+- The biggest decision I face at the moment is trying to decide a specific topic to use for a data science topic. I have
 tentatively decided to model the interaction of an average bank customer over his/her lifespan. I intend to examine the
 purchasing behaviour of a set of customers and try to extrapolate the data into real world workable information.
 
@@ -29,25 +29,25 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-  Yes
+  -Yes
 
 2. Trend related to the news
-  Yes
+  -Yes
 
 3. Who does that?
-  Yes
+  -Yes
 
 4. Answering a question people care about
-  Yes
+  -Yes
 
 5. Valuable to businesses
-  Yes
+  -Yes
 
 6. What's the most popular?
-  Yes
+  -Yes
 
 7. Cost/Money rankings
-  Yes
+  -Yes
 
 ## Misconceptions
 
