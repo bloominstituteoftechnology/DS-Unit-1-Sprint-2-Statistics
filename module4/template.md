@@ -18,9 +18,7 @@ What do you know about?
 an understanding of business, finance and economics in general.
 
 What decisions do you face?
-- The biggest decision I face at the moment is trying to decide a specific topic to use for a data science topic. I have
-tentatively decided to model the interaction of an average bank customer over his/her lifespan. I intend to examine the
-purchasing behaviour of a set of customers and try to extrapolate the data into real world workable information.
+- The biggest decision I face at the moment is trying to decide a specific topic to use for a data science topic.
 
 ## Seven templates
 
@@ -29,48 +27,49 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-  -Yes
+  - Yes
 
 2. Trend related to the news
-  -Yes
+  - Yes
 
 3. Who does that?
-  -Yes
+  - Yes
 
 4. Answering a question people care about
-  -Yes
+  - Yes
 
 5. Valuable to businesses
-  -Yes
+  - Yes
 
 6. What's the most popular?
-  -Yes
+  - Yes
 
 7. Cost/Money rankings
-  -Yes
+  - Yes
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-Misconceptions
+- Misconceptions regarding this topic are 
 
 ## Examples
 
 What data storytelling example inspires you?
-
+A look at the various examples of data storytelling on the web show impressive data stories.
 
 Could you do a new hypothesis, for the same question?
 
 
 Could you do a new question, for the same topic?
-
+I intend to statistically examine the data to find patterns to answer new questions that may arise.
 
 Could you do a new topic, with the same "style"?
-
+ -  Yes. I have tentatively decided to examine the summary of deposits held by FDIC insured financial institutions over a period of time.
 
 ## Data
 
 Where could you search for data about your topic?
+- Data for this topic may be obtained from data.world website.
 
 ---
 
