@@ -78,17 +78,18 @@ Where could you search for data about your topic?
 ---
 
 # Ideas for data storytelling - Idea 2
+Using upvotes on reddit/repost bot to determine if titles with misspellings get more upvotes/comments than their original posts.
 
 ## You
 
 What do you care about?
-
+I care about how people use technology and how technology uses people
 
 What do you know about?
-
+psychology
 
 What decisions do you face?
-
+How to get the information I want, how to control for timing of posts (day/night/etc)
 
 ## Seven templates
 
@@ -106,10 +107,10 @@ Can you apply the templates to your topics?
 
 
 4. Answering a question people care about
-
+This question would be mostly about revealing biases in people-- if they respond more to misspellings maybe that captures their attention, or perhaps be feel compelled to go into comments to let them know they have a misspelling
 
 5. Valuable to businesses
-
+How do people respond to interrupted expectancies? That is, how do people react to misspellings or other "mistakes" in copy or images? Does this build interest?
 
 6. What's the most popular?
 
@@ -120,7 +121,7 @@ Can you apply the templates to your topics?
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+They might think misspellings don't impact interest to a viewer (assuming I find there is a link between the two)
 
 ## Examples
 
@@ -139,3 +140,4 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+Reddit! I would also get a raspberry pi to run a bot and get that info
