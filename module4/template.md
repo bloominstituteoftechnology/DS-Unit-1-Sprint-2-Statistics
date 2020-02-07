@@ -58,7 +58,7 @@ https://www.statista.com/statistics/252393/total-us-expenditure-for-mental-healt
 ## Misconceptions
 
 What misconceptions do people have about your topic?
--"Mental ilness looks the same everywhere."
+-"Mental illness looks the same everywhere."
 https://news.stanford.edu/2014/07/16/voices-culture-luhrmann-071614/
 
 ## Examples
