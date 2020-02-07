@@ -89,13 +89,13 @@ https://libguides.library.hunter.cuny.edu/c.php?g=438921&p=3096250
 ## You
 
 What do you care about?
-Goats
+-Goats
 
 What do you know about?
-raising goats
+-Raising goats
 
 What decisions do you face?
-how to breed the perfect goat
+-How to breed the perfect goat
 
 ## Seven templates
 
@@ -103,31 +103,31 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 
 Can you apply the templates to your topics? 
 
-1. Geographic Variation
-there are lots of different kinds of goats in the world, with varying population densities
+1. Geographic Variation:
+There are lots of different kinds of goats in the world, with varying population densities
 
-2. Trend related to the news
+2. Trend related to the news:
 Do goats spread the coronavirus?
 
 3. Who does that?
 various ways goats are used (milk, meat, brush control, yoga)
 
-4. Answering a question people care about
+4. Answering a question people care about:
 why are goats 'like that'?
 
-5. Valuable to businesses
-Goat simulator was incredibly popular, Overwatch now has a character in a goat outfit -- goats are IN
+5. Valuable to businesses:
+Goat simulator was incredibly popular, Overwatch now has a character in a goat outfit -- goats are IN (plus goat yoga can reduce employee stress levels)
 
 6. What's the most popular?
 Nubians, Alpines, Boers, and the rest - How do they stack up?
 
-7. Cost/Money rankings
+7. Cost/Money rankings:
 Which breed is best for which use case? (hint: you can't go wrong with a pygmy/dwarf)
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-goats are actually incredibly intelligent, kind, and social.
+That goats are stubborn and stupid. They are actually very social, intelligent, and kind.
 
 ## Examples
 
@@ -135,13 +135,13 @@ What data storytelling example inspires you?
 https://www.youtube.com/watch?v=g_pwPhFvgNo
 
 Could you do a new hypothesis, for the same question?
-instead of combat viability, look at economic applications
+Instead of combat viability, look at economic applications
 
 Could you do a new question, for the same topic?
 Why are goats still so popular, and with who?
 
 Could you do a new topic, with the same "style"?
-Any sort of population study could be fit to this style.
+Any sort of population could be fit to this style with enough creativity.
 
 ## Data
 
