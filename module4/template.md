@@ -81,8 +81,12 @@ Could you do a new topic, with the same "style"?
 
 Where could you search for data about your topic?
 
-http://berkeleyearth.org/data/ Would be one possible data source
-http://www.realclimate.org/index.php/data-sources/ is another source of several datasets
+- One possible data source:
+
+http://berkeleyearth.org/data/
+- Another source of several datasets:
+
+http://www.realclimate.org/index.php/data-sources/
 
 ---
 
@@ -139,7 +143,9 @@ What misconceptions do people have about your topic?
 
 What data storytelling example inspires you?
 
-https://www.brennancenter.org/our-work/analysis-opinion/how-gerrymandering-kept-democrats-winning-even-more-seats-tuesday contains some interesting data and visualizations specific to North Carolina
+https://www.brennancenter.org/our-work/analysis-opinion/how-gerrymandering-kept-democrats-winning-even-more-seats-tuesday 
+
+Contains some interesting data and visualizations specific to North Carolina
 
 Could you do a new hypothesis, for the same question?
 - It may be interesting to look at the same question, but in different areas geographically
