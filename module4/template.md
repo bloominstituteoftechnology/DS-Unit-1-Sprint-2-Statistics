@@ -50,15 +50,14 @@ Can you apply the templates to your topics?
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-- Misconceptions regarding this topic are 
 
 ## Examples
 
 What data storytelling example inspires you?
-A look at the various examples of data storytelling on the web show impressive data stories.
+- 
 
 Could you do a new hypothesis, for the same question?
-
+- This depends on the findings of the analysis.
 
 Could you do a new question, for the same topic?
 I intend to statistically examine the data to find patterns to answer new questions that may arise.
