@@ -73,7 +73,7 @@ Could you do a new question, for the same topic?
 Why is the percentage of people with behavioral health issues rising?
 
 Could you do a new topic, with the same "style"?
-Health insurance specifically as it relates to behavioral health services
+Health insurance specifically, as it relates to behavioral health services
 
 ## Data
 
