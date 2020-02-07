@@ -37,13 +37,18 @@ Can you apply the templates to your topics?
 Nearly 14% of the current U.S. population was born abroad. The percentage represents a sharp increase compared to the historical low recorded in 1970, when it reached less than 5%, but it is approximately the same that prevailed from 1870 to 1910.
 
 3. Who does that?
+
 American Community Survey 2000-17, Gibson e Jung 1850-1990.
 
 4. Answering a question people care about
 
+The drop in the birth rate among the natives.
+In contrast, the immigrant population and their children continued to grow.
 
 5. Valuable to businesses
 
+Immigrants contribute directly to economic growth - increasing population and demand for goods and services.
+Immigrants are more likely to have a master's or doctorate than the children of native parents.
 
 6. What's the most popular?
 
