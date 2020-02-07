@@ -6,7 +6,8 @@ Then compare and contrast and select one as the idea you're leaning towards
 working on for your project week.
 
 
-# Ideas for data storytelling - Idea 1 - Something climate-related
+# Ideas for data storytelling - Idea 1
+# Something climate-related
 
 ## You
 
@@ -83,7 +84,8 @@ http://www.realclimate.org/index.php/data-sources/ is another source of several 
 
 ---
 
-# Ideas for data storytelling - Idea 2 - Political redistricting and the effects on voting results vs outcomes
+# Ideas for data storytelling - Idea 2
+# Political redistricting and the effects on voting results vs outcomes
 
 ## You
 
