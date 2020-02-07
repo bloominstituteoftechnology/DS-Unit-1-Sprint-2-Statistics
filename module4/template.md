@@ -63,6 +63,7 @@ What misconceptions do people have about your topic?
 ## Examples
 
 What data storytelling example inspires you?
+
 https://www.bbc.com/news/science-environment-45775309
 The BBC did a piece on shrinking arctic ice including a great visualization of the size of arctic ice over time:
 ![](https://news.files.bbci.co.uk/include/newsspec/21570/assets/app-project-assets/sea_ice_animation_640-nc.gif)
@@ -79,6 +80,7 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
 http://berkeleyearth.org/data/ Would be one possible data source
 http://www.realclimate.org/index.php/data-sources/ is another source of several datasets
 
@@ -136,6 +138,7 @@ What misconceptions do people have about your topic?
 ## Examples
 
 What data storytelling example inspires you?
+
 https://www.brennancenter.org/our-work/analysis-opinion/how-gerrymandering-kept-democrats-winning-even-more-seats-tuesday contains some interesting data and visualizations specific to North Carolina
 
 Could you do a new hypothesis, for the same question?
@@ -150,4 +153,5 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
 https://github.com/MEDSL/2018-elections-official
