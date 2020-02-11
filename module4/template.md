@@ -12,12 +12,15 @@ working on for your project week.
 
 What do you care about?
 
+I care about the safety of myself, my loved ones, and others who operate automobiles daily.
 
 What do you know about?
 
+I know that the leading cause of death in the United States, aside from clinically-diagnosed medical conditions, is accidents/unintentional injuries, where automobile accidents amount to a massive portion of these deaths. Unintentional injuries accounted for 5.9% of U.S. deaths in 2018.
 
 What decisions do you face?
 
+Every day, I get in my car and drive to work, as does much of the United States. In my particular case, driving is the only option. For others, some people choose to take a train, subway, or other method of public transportation.
 
 ## Seven templates
 
@@ -27,18 +30,23 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
+Yes. The data is broken down by 49 states, then by counties, cities, zip code, and streets...all the way to the street number that the accident occured on.
 
 2. Trend related to the news
 
+Yes. Automobile accidents are always in the news, as well as the resulting traffic of the accidents.
 
 3. Who does that?
 
+Yes. Many Americans commute to work daily in their automobiles.
 
 4. Answering a question people care about
 
+Yes. Finding parameters that lead
 
 5. Valuable to businesses
 
+To be honest, businesses may actually monetarily benefit more from car accidents than the alternative. They'll be sure to jack up your insurance rates, declare your vehicle totaled, then fix it and sell it (or pay you a lesser value than its really worth), and charge extortionist amounts for medical expenses. In the unfortunate case that you pass away, the funeral home will also make it's fair share on your unfortunate event. However, we can assume some business benefits of fewer accidents may be less employees late to work,
 
 6. What's the most popular?
 
