@@ -42,40 +42,49 @@ Yes. Many Americans commute to work daily in their automobiles.
 
 4. Answering a question people care about
 
-Yes. Finding parameters that lead
+Yes. Finding specifics that lead to car accidents is something the public would most likely care about.
 
 5. Valuable to businesses
 
-To be honest, businesses may actually monetarily benefit more from car accidents than the alternative. They'll be sure to jack up your insurance rates, declare your vehicle totaled, then fix it and sell it (or pay you a lesser value than its really worth), and charge extortionist amounts for medical expenses. In the unfortunate case that you pass away, the funeral home will also make it's fair share on your unfortunate event. However, we can assume some business benefits of fewer accidents may be less employees late to work,
+Yes. To be honest, businesses may actually monetarily benefit more from car accidents than the alternative. They'll be sure to jack up your insurance rates regardless of fault, declare your vehicle totaled, then fix it and sell it (or pay you a lesser value than it's really worth), and charge extortionist amounts for medical expenses. In the unfortunate case that you pass away, the funeral home will also make it's fair share on your unfortunate event. However, this is valuable to everyone who operates a vehicle, including those who operate vehicles privately or on behalf of a business.
 
 6. What's the most popular?
 
+Yes. It would be particulary useful to understand the areas that most accidents occur and the commonalities between them: whether terrain type, weather conditions, road characteristics, etc.
 
 7. Cost/Money rankings
 
+Doesn't quite relate to the topic.
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
 
+I wouldn't call it a misconception, but I don't think most people realize how many car accidents occur in the United States -furthermore, the annual deaths resulting from these accidents.
 
 ## Examples
 
 What data storytelling example inspires you?
 
+Making explanatory visualizations for my data.
 
 Could you do a new hypothesis, for the same question?
 
+Yes.
 
 Could you do a new question, for the same topic?
 
+Yes.
 
 Could you do a new topic, with the same "style"?
 
+Yes.
 
 ## Data
 
 Where could you search for data about your topic?
+
+This data is available on Kaggle.
 
 ---
 
