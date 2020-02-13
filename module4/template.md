@@ -46,7 +46,7 @@ Yes. Finding specifics that lead to car accidents is something the public would 
 
 5. Valuable to businesses
 
-Yes. To be honest, businesses may actually monetarily benefit more from car accidents than the alternative. They'll be sure to jack up your insurance rates regardless of fault, declare your vehicle totaled, then fix it and sell it (or pay you a lesser value than it's really worth), and charge extortionist amounts for medical expenses. In the unfortunate case that you pass away, the funeral home will also make it's fair share on your unfortunate event. However, this is valuable to everyone who operates a vehicle, including those who operate vehicles privately or on behalf of a business.
+Yes. To be honest, businesses may actually monetarily benefit more from car accidents than the alternative. They'll be sure to jack up insurance rates regardless of fault, declare your vehicle totaled, then fix it and sell it (or pay you a lesser value than it's really worth). Then there are medical expenses. In the unfortunate case that you pass away, the funeral home will also make it's fair share on your unfortunate event. However, this is valuable to everyone who operates a vehicle, including those who operate vehicles privately or on behalf of a business.
 
 6. What's the most popular?
 
