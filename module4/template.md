@@ -98,6 +98,7 @@ I care about the safety of myself, my loved ones, and others who travel by airpl
 
 What do you know about?
 
+There has been a lot of controversy over certain airplane models regarding safety, as well as recent aviation accidents/crashes.
 
 What decisions do you face?
 
