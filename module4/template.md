@@ -107,38 +107,49 @@ What decisions do you face?
 
 Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explains the seven templates from Priceonomics.
 
-Can you apply the templates to your topics? 
+Can you apply the templates to your topics? Fund management/alternative investment industry
 
 1. Geographic Variation
 
+  which areas has investment in alternative investments grown the most over x years?
 
 2. Trend related to the news
 
+  top performing fund managers for the past year?
 
 3. Who does that?
 
+  most likely individuals that are investing in alternative investments
 
 4. Answering a question people care about
 
+  who is the most sought after fund manager? 
 
 5. Valuable to businesses
 
+  sectors/industries that are seeing the highest level return on investment
 
 6. What's the most popular?
 
+  sectors/industries that are seeing the highest level of venture capital investment
 
 7. Cost/Money rankings
+
+  which fund manager has raised the most capital this year?
 
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
 
+  That alternative investments isnt just stock market. Its anything that you could invest in. 
+
 
 ## Examples
 
 What data storytelling example inspires you?
 
+  "Whats most popular"
 
 Could you do a new hypothesis, for the same question?
 
@@ -152,3 +163,5 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
+  this one could be very challenging to get a good data set. A lot of data is out there but they are under pay sites that fund managers subscribe to. May not be able to find a good enough data site. 
