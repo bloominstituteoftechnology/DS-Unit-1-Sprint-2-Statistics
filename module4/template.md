@@ -118,20 +118,26 @@ Is tourism related to coral reef destruction?
 ## Misconceptions
 
 What misconceptions do people have about your topic?
+
 Destruction of coral reef and tourism are not related
 
 ## Examples
 
 What data storytelling example inspires you?
+
 Coral reef degradation is not correlated with local human population density
+
 Could you do a new hypothesis, for the same question?
 
 Could you do a new question, for the same topic?
+
 Is coral reef degradation correlated with tourism?
+
 Could you do a new topic, with the same "style"?
 
 
 ## Data
 
 Where could you search for data about your topic?
+
 https://datasetsearch.research.google.com/
