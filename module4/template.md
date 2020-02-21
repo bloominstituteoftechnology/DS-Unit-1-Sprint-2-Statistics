@@ -67,19 +67,25 @@ What misconceptions do people have about your topic?
 
 What data storytelling example inspires you?
 
+https://fivethirtyeight.com/features/do-great-regular-seasons-matter-anymore-in-the-nba-asking-for-a-friend-in-milwaukee/
 
 Could you do a new hypothesis, for the same question?
 
+I could either hypothesize that regular season performance is a good indicator of postseason success, or I could say regular season performance is not an indicator of postseason success.
 
 Could you do a new question, for the same topic?
 
+Is regular season win % against teams above .500 correlated to postseason success?
 
 Could you do a new topic, with the same "style"?
 
+You could apply this to ptetty much any sport. 
 
 ## Data
 
 Where could you search for data about your topic?
+
+Kaggle or 
 
 ---
 
@@ -141,16 +147,23 @@ What misconceptions do people have about your topic?
 
 What data storytelling example inspires you?
 
+https://towardsdatascience.com/visualizing-the-stock-market-with-tableau-c0a7288e7b4d
 
 Could you do a new hypothesis, for the same question?
 
+Which companies are best to invest in, and which are best to stay away from?
 
 Could you do a new question, for the same topic?
 
+Based on a 2 year (or 5, or 10) graph of a stocks performance, can you predict the future days, months, or years ahead?
 
 Could you do a new topic, with the same "style"?
+
+Comparing profit margins of restaurants with their menu pricing.
 
 
 ## Data
 
 Where could you search for data about your topic?
+
+Kaggle or other online sources of datasets.
