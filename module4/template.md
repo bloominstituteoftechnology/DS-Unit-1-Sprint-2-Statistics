@@ -19,6 +19,11 @@ What do you know about?
 What decisions do you face?
 
 
+### Response:
+
+I'm passionate about micromobility, i.e. rental electric scooters. I've used them as a consumer and have been annoyed by them as a city resident. I'm curious about peak usage times/zones from the perspective of a consumer and someone trying to avoid them.
+
+
 ## Seven templates
 
 Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explains the seven templates from Priceonomics.
@@ -45,10 +50,13 @@ Can you apply the templates to your topics?
 
 7. Cost/Money rankings
 
+# I think a geographic comparison between two cities could provide interesting insights to trends in usage.
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
+
+How scooters/bikes are used by people to get around. 
 
 
 ## Examples
@@ -69,7 +77,14 @@ Could you do a new topic, with the same "style"?
 
 Where could you search for data about your topic?
 
----
+
+
+Municipal government open data portals 
+
+Do ridership patterns vary between annual and monthly pass holders? Where are hubs of rental traffic (estimated through Dykstra's shortest path algorithm and OSMnx/NetworkX graph analysis. 
+
+Do users take bikes for short/direct trips or more leisurely rides? Is ridership affected by weather variations?
+
 
 # Ideas for data storytelling - Idea 2
 
@@ -83,6 +98,8 @@ What do you know about?
 
 What decisions do you face?
 
+# Music/online streaming
+
 
 ## Seven templates
 
@@ -133,3 +150,8 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
+Geographic variations in music/content streaming preferences.
+
+Spotify API or Google Analytics queries.
+
