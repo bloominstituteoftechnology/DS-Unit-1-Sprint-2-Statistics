@@ -12,11 +12,17 @@ working on for your project week.
 
 What do you care about?
 
+cutody agreements
+animals
 
 What do you know about?
 
+animals
+music
 
 What decisions do you face?
+
+custody agreements
 
 
 ## Seven templates
