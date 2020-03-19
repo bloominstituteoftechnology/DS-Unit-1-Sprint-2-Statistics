@@ -10,13 +10,9 @@ working on for your project week.
 
 ## You
 
-What do you care about?
+What do you care about/ What do you know about?
 
-
-What do you know about?
-
-
-What decisions do you face?
+Disc golf, for the sake of the assignment analyzing the professional scene
 
 
 ## Seven templates
@@ -25,49 +21,28 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 
 Can you apply the templates to your topics? 
 
-1. Geographic Variation
+4.) Answering a question people care about
 
-
-2. Trend related to the news
-
-
-3. Who does that?
-
-
-4. Answering a question people care about
-
-
-5. Valuable to businesses
-
-
-6. What's the most popular?
-
-
-7. Cost/Money rankings
+What makes Paul Mcbeth so dominate?
 
 
 ## Misconceptions
 
-What misconceptions do people have about your topic?
+There are a lot of aspects about disc golf that can make a person great. I don't think there's much debate that Paul is the best player,
+but people have many varying perspectives as to why. 
 
 
 ## Examples
 
-What data storytelling example inspires you?
-
-
 Could you do a new hypothesis, for the same question?
 
-
-Could you do a new question, for the same topic?
-
-
-Could you do a new topic, with the same "style"?
+Yes, though I don't believe I'll have to. There isn't room for bias in this hypothesis, but as I eluded to in the misconceptions, there are many reasons that will contribute to why Paul is the best player, we just want to see how many of these categories he peaks. I think that he'll rank highly among many of the top categories, but I believe his putting, and more importantly his outside circle 1 putting, that will give him the greatest advantage.
 
 
 ## Data
 
-Where could you search for data about your topic?
+UDisc has every major tournament recorded back to 2016. Ideally i'd like to go further back than that, but ~4 years of good data will 
+still be able to reinforce the narrative. 
 
 ---
 
@@ -75,13 +50,9 @@ Where could you search for data about your topic?
 
 ## You
 
-What do you care about?
+What do you care about?/What do you know about?
 
-
-What do you know about?
-
-
-What decisions do you face?
+The NFL, primarily the San Francisco 49ers
 
 
 ## Seven templates
@@ -90,46 +61,31 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 
 Can you apply the templates to your topics? 
 
-1. Geographic Variation
 
-
-2. Trend related to the news
-
-
-3. Who does that?
 
 
 4. Answering a question people care about
 
-
-5. Valuable to businesses
-
-
-6. What's the most popular?
-
-
-7. Cost/Money rankings
+Where must the 49ers improve the most this year to win the 2021 super bowl
 
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
 
+I don't believe people have any misconceptions about the topic, other than the 49ers flat out not making the superbowl. Which, I mean 
+is very possible, but they made the super bowl this last year and I just want to focus on where they can improve. 
+
 
 ## Examples
-
-What data storytelling example inspires you?
-
-
-Could you do a new hypothesis, for the same question?
 
 
 Could you do a new question, for the same topic?
 
-
-Could you do a new topic, with the same "style"?
+Yes, such as 'Is Garropolo good enough?' analyzing our quarterback, arguably the most important position on any nfl team, comparing him to other "non-elite" qbs that have won the super bowl before and exploring the stats of the team around them. 
 
 
 ## Data
 
-Where could you search for data about your topic?
+Kaggle has a great NFL dataset that stems back to 2009, but if I need to find more specific data, there is no shortage of specific NFL
+datasets that return from a quick google search. 
