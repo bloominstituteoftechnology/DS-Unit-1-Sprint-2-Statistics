@@ -49,26 +49,26 @@ Can you apply the templates to your topics?
 
 ## Misconceptions
 
-What misconceptions do people have about your topic?
+What misconceptions do people have about your topic?  
 Building decent home computers requires thousands of dollars
 
 ## Examples
 
-What data storytelling example inspires you?
+What data storytelling example inspires you?  
 [Backblaze's article](https://www.backblaze.com/blog/hard-drive-cost-per-gigabyte/) on hard drive prices that shows trends over time with relevance to the contemporary events. 
 
-Could you do a new hypothesis, for the same question?
+Could you do a new hypothesis, for the same question?  
 Hard drive price spikes in 2011-2012 led to roadblocks in an increasingly cloud based internet ecosystem.
 
-Could you do a new question, for the same topic?
+Could you do a new question, for the same topic?  
 How badly will the Samsung and Hynix shutdowns of 2020 affect the prices of technology later this year?
 
-Could you do a new topic, with the same "style"?
+Could you do a new topic, with the same "style"?  
 How did the cryptocurrency boom of 2017-18 cause a near global doubling or more of computer hardware prices?
 
 ## Data
 
-Where could you search for data about your topic?
+Where could you search for data about your topic?  
 Hardware retailers, companies' price datasets over time
 
 ---
@@ -121,19 +121,19 @@ What misconceptions do people have about your topic?
 
 ## Examples
 
-What data storytelling example inspires you?
+What data storytelling example inspires you?  
 [http://everynoise.com/](http://everynoise.com/) which is an interactive web of all music genres on Spotify.
 
-Could you do a new hypothesis, for the same question?
+Could you do a new hypothesis, for the same question?  
 The most popular music genres on Spotify have shifted since the service's global launch.
 
-Could you do a new question, for the same topic?
+Could you do a new question, for the same topic?  
 Which music genres are seeing the most gains in popularity? 
 
-Could you do a new topic, with the same "style"?
+Could you do a new topic, with the same "style"?  
 Not to the interactive extent of the inspriation. 
 
 ## Data
 
-Where could you search for data about your topic?
+Where could you search for data about your topic?  
 Streaming service providers' data.
