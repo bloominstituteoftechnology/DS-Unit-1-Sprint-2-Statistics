@@ -68,6 +68,8 @@ Could look at revenue for the casino division vs food/beverage/hotel, and see wh
 
 What misconceptions do people have about your topic?
 
+I think there are many misconceptions regarding the casino industry. Specifically, opponents always first point to the increased crime rate, or the potential to get people addicted to gambling. It is seen as a negative strain on the local ecnonomy. But what is often ignored is the positive ecnonomic impact that all the new jobs a casino brings, and all the tax money that helps the community.
+
 
 ## Examples
 
