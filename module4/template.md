@@ -8,6 +8,8 @@ working on for your project week.
 ## Compare and Contrast
 I would be doing a qualitative analysis in either case but the Pew one would be a bit easier because I've already put that data into caregories which is the most time-consuming part. And it's an analysis I've wanted to do for a long time but waited until now because I wanted to be able to use python to do the quantitative analysis part more professionally. I'm 99% certain I'm doing the Pew Internet Attitudes survey data.
 
+### Find my updated github portfolio [here](https://worldwidekatie.github.io/)
+
 
 # Ideas for data storytelling - Idea 1
 
