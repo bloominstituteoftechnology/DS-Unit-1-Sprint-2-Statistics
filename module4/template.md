@@ -12,8 +12,12 @@ working on for your project week.
 
 What do you care about?
 
+I am very interested in the casino industry.
+
 
 What do you know about?
+
+I feel I am pretty informed of how the casino industry operates.
 
 
 What decisions do you face?
@@ -27,8 +31,12 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
+Differences in revenue between different gaming markets.
+
 
 2. Trend related to the news
+
+New casinos opening.
 
 
 3. Who does that?
@@ -44,6 +52,8 @@ Can you apply the templates to your topics?
 
 
 7. Cost/Money rankings
+
+Could look at revenue for the casino division vs food/beverage/hotel, and see what the trends are overtime.
 
 
 ## Misconceptions
