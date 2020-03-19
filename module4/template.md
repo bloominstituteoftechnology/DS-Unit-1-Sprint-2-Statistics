@@ -56,22 +56,21 @@ Unhealthy
 ## Examples
 
 What data storytelling example inspires you?
-
+Work
 
 Could you do a new hypothesis, for the same question?
 
-
+-
 Could you do a new question, for the same topic?
-
+-
 
 Could you do a new topic, with the same "style"?
-
+-
 
 ## Data
 
 Where could you search for data about your topic?
-
----
+Secondary Market
 
 # Ideas for data storytelling - Idea 2
 
