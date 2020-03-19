@@ -11,12 +11,15 @@ working on for your project week.
 ## You
 
 What do you care about?
+Casinos
 
 
 What do you know about?
+Computers
 
 
 What decisions do you face?
+Budgeting 
 
 
 ## Seven templates
@@ -44,31 +47,33 @@ Can you apply the templates to your topics?
 
 
 7. Cost/Money rankings
+Yes
 
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+How much people lose money from casinos/How much casinos make from them
 
 ## Examples
 
 What data storytelling example inspires you?
+538
 
 
 Could you do a new hypothesis, for the same question?
-
+Yes
 
 Could you do a new question, for the same topic?
-
+Yes
 
 Could you do a new topic, with the same "style"?
-
+No
 
 ## Data
 
 Where could you search for data about your topic?
-
+Public company records
 ---
 
 # Ideas for data storytelling - Idea 2
@@ -76,13 +81,13 @@ Where could you search for data about your topic?
 ## You
 
 What do you care about?
-
+Legal Drugs
 
 What do you know about?
-
+March Madness
 
 What decisions do you face?
-
+How much coffee I should drink
 
 ## Seven templates
 
@@ -100,7 +105,7 @@ Can you apply the templates to your topics?
 
 
 4. Answering a question people care about
-
+Yes
 
 5. Valuable to businesses
 
@@ -115,21 +120,23 @@ Can you apply the templates to your topics?
 
 What misconceptions do people have about your topic?
 
+How much caffiene is in each drink/
 
 ## Examples
 
 What data storytelling example inspires you?
-
+The pudding
 
 Could you do a new hypothesis, for the same question?
-
+No
 
 Could you do a new question, for the same topic?
-
+Yes
 
 Could you do a new topic, with the same "style"?
-
+Yes
 
 ## Data
 
 Where could you search for data about your topic?
+https://www.caffeineinformer.com/the-caffeine-database
