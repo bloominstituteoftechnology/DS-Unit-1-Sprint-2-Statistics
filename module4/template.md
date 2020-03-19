@@ -41,14 +41,22 @@ New casinos opening.
 
 3. Who does that?
 
+Who is actually visiting the casinos.
+
 
 4. Answering a question people care about
+
+Economic impact to region of casinos. New jobs, crime, gambling addiction, etc.
 
 
 5. Valuable to businesses
 
+Analyze trends in what patrons are spending their money on, to potentially predict where more effort should be focused.
+
 
 6. What's the most popular?
+
+Could analyze how well sports betting has done since being legalized in many states recently.
 
 
 7. Cost/Money rankings
