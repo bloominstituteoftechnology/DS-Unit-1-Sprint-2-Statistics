@@ -10,16 +10,16 @@ working on for your project week.
 
 ## You
 
-What do you care about?
-Computer Hardware, Music
+What do you care about?  
+Computer Hardware
 
-What do you know about?
-Computer hardware, Music
+What do you know about?  
+Computer hardware
 
-What decisions do you face?
-How will I get data?
-At what scale will I perform analysis?
-
+What decisions do you face?  
+How will I get data?  
+At what scale will I perform analysis?  
+  
 ## Seven templates
 
 Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explains the seven templates from Priceonomics.
@@ -77,14 +77,14 @@ Hardware retailers, companies' price datasets over time
 
 ## You
 
-What do you care about?
+What do you care about?  
 Music
 
-What do you know about?
-Music
+What do you know about?  
+Music 
 
-What decisions do you face?
-How will I get data?
+What decisions do you face?  
+How will I get data?  
 At what scale will I perform analysis?
 
 ## Seven templates
