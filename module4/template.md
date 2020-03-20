@@ -11,7 +11,7 @@ working on for your project week.
 ## You
 
 What do you care about?
-
+I care much global warming.
 
 What do you know about?
 
@@ -27,15 +27,16 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
+I suspect strongly that some places will be harder hit than others, but to think that others will go totally unaffected would be a mistake.
 
 2. Trend related to the news
-
+The news does not report about this enough.
 
 3. Who does that?
-
+I would imagine there are data scientists working with those involved with tracking global changes.
 
 4. Answering a question people care about
-
+I would only hope that people care about this issue, but if behavior speaks more truth, I'm afraid most turn a blind eye to what's happening.
 
 5. Valuable to businesses
 
@@ -49,7 +50,7 @@ Can you apply the templates to your topics?
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+It is my belief that due to the fact that people are still buying vehicles that are not efficient fuelwise, people do not worry, don't care or otherwise can't be bothered with making a smaller footprint.
 
 ## Examples
 
@@ -76,8 +77,7 @@ Where could you search for data about your topic?
 ## You
 
 What do you care about?
-
-
+Shortages due to hording because of coronavirus.  Looking at the numbers, suicide, the tenth biggest cause of death in the US happened on an average of 132 daily in 2018, or better still the number one cause of death in the US was heart disease which averaged nearly 1796 daily losses.  Both numbers far outweigh deaths in the US due to coronavirus, yet...neither caused shortages at the stores.  
 What do you know about?
 
 
