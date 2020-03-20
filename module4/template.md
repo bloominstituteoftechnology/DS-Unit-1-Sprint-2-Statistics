@@ -27,6 +27,7 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
+yes, seeing how te toilet paper and etc. prices are changing over different amazon locations
 
 2. Trend related to the news
 
