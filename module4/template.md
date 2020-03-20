@@ -22,6 +22,8 @@ I feel I am pretty informed of how the casino industry operates.
 
 What decisions do you face?
 
+There is a lot of data in this field, so determining what tells the most interesting story will be the most difficult part.
+
 
 ## Seven templates
 
@@ -74,22 +76,22 @@ I think there are many misconceptions regarding the casino industry. Specificall
 ## Examples
 
 What data storytelling example inspires you?
-
+https://priceonomics.com/5g-is-200x-faster-and-will-unlock-everything-heres/
 
 Could you do a new hypothesis, for the same question?
-
+Yes.
 
 Could you do a new question, for the same topic?
-
+Yes.
 
 Could you do a new topic, with the same "style"?
-
+Yes.
 
 ## Data
 
 Where could you search for data about your topic?
 
----
+UNLV has a whole center for gaming research, with many datasets.
 
 # Ideas for data storytelling - Idea 2
 
@@ -97,11 +99,15 @@ Where could you search for data about your topic?
 
 What do you care about?
 
+I like to travel.
 
 What do you know about?
 
+I used to travel quite a bit, so I think I have a good feel for the industry.
 
 What decisions do you face?
+
+This is a huge industry, so narrowing down what specifically I am interested in looking at.
 
 
 ## Seven templates
@@ -111,45 +117,59 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+ Yes.
 
 2. Trend related to the news
+Yes.
 
 
 3. Who does that?
+Yes.
 
 
 4. Answering a question people care about
+Yes.
 
 
 5. Valuable to businesses
+Yes.
 
 
 6. What's the most popular?
 
+Could pull data from review sites to help determine this.
+
 
 7. Cost/Money rankings
+
+Affordable vs unaffordable vacations.
 
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
 
+That going on vacation is unaffordable. 
+
 
 ## Examples
 
 What data storytelling example inspires you?
 
+I like the style used here:
+https://priceonomics.com/the-places-in-america-with-the-best-and-worst/
 
 Could you do a new hypothesis, for the same question?
-
+Yes.
 
 Could you do a new question, for the same topic?
-
+Yes.
 
 Could you do a new topic, with the same "style"?
-
+Yes.
 
 ## Data
 
 Where could you search for data about your topic?
+
+I believe there are a lot of travel related datasets on kaggle.
