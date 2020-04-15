@@ -11,7 +11,7 @@ working on for your project week.
 ## You
 
 What do you care about?
-
+Toilet paper and price of other critical products for the time being
 
 What do you know about?
 
@@ -27,6 +27,7 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
+yes, seeing how te toilet paper and etc. prices are changing over different amazon locations
 
 2. Trend related to the news
 
@@ -69,7 +70,7 @@ Could you do a new topic, with the same "style"?
 
 Where could you search for data about your topic?
 
----
+rapidapi.com/
 
 # Ideas for data storytelling - Idea 2
 
