@@ -12,7 +12,7 @@ Ever since I stepped into a local co-op or whole foods, I've been fascinated by 
 ## You
 
 What do you care about?
-Government
+\nGovernment
 Wellness
 Business
 
