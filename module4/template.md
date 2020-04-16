@@ -72,7 +72,6 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
-   - Kaggle data sets
    - Insurance Institute for Highway Safety (IIHS)
 ---
 
@@ -143,6 +142,4 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
-   - Kaggle
-   - Google
    - Restaurant industry stats
