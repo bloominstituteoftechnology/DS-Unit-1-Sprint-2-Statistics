@@ -71,18 +71,18 @@ Where could you search for data about your topic?
 - I could go look at the official website of premier league.
 ---
 
-# Ideas for data storytelling - Idea 2
+# Ideas for data storytelling - Workout to get fitter and stronger
 
 ## You
 
 What do you care about?
-
+- The importance of working out and how it helps us to stay healthy and be fit.
 
 What do you know about?
-
+- The routines you need to do daily to be fit.
 
 What decisions do you face?
-
+- how much workout and what kind of workout is good for people to stay healthy?
 
 ## Seven templates
 
@@ -91,41 +91,41 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+- Which state is more active?
 
 2. Trend related to the news
-
+- What are new exercises or routines to get the result faster and better?
 
 3. Who does that?
-
+- Adults and older people look for ways to improve their health.
 
 4. Answering a question people care about
-
+- People care about their health and how they can optimize their body to be more productive.
 
 5. Valuable to businesses
-
+- It seems to valuable as businesses all around the world are looking for formula to improve people's health.
 
 6. What's the most popular?
-
+- What kinds of workouts?
 
 7. Cost/Money rankings
-
+- Several workouts, some requires no equipment and some requires expensive equipment.
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+- Eating healthy and nutritious food are enough.
 
 ## Examples
 
 What data storytelling example inspires you?
-
+- How showing people workout is beneficial not only for physical health but for mental health as well.
 
 Could you do a new hypothesis, for the same question?
-
+- yes, workout to look young.
 
 Could you do a new question, for the same topic?
-
+- yes, workout for a healthy lifestyle.
 
 Could you do a new topic, with the same "style"?
 
@@ -133,3 +133,4 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+- data.gov, kaggle
