@@ -11,13 +11,13 @@ working on for your project week.
 ## You
 
 What do you care about?
-
+Bike lanes
 
 What do you know about?
-
+Many cities have been gathering data on bike lanes and installing them and it would be good to analyze how effective they are 
 
 What decisions do you face?
-
+Where to install bike lanes where people will use them and they will make the most difference
 
 ## Seven templates
 
