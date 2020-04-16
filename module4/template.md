@@ -9,7 +9,7 @@ working on for your project week.
 # Ideas for data storytelling - Idea 1
 
 **Influence in Government / Money in Politics / Democratic Outcome**
-<p>What topics/provisions do bills cover and what influences rule-making ? What influences how politicians/representatives vote? Do they satisfy their constituents' expectations? 
+<p>What topics/provisions do bills cover and what influences rule-making ? What influences how politicians/representatives vote? Do they satisfy their constituents' expectations?</p>
 
 ## You
 
