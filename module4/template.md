@@ -84,7 +84,7 @@ What do you know about?
 Theres a lot of datasets available for cryptocurrencies open source online
 
 What decisions do you face?
-
+whether to invest
 
 ## Seven templates
 
@@ -121,16 +121,22 @@ its all a scam
 ## Examples
 
 What data storytelling example inspires you?
+https://hackernoon.com/digging-deeper-into-cryptoassets-data-and-visualization-resources-8a922b62d51c
+
+https://thenextweb.com/hardfork/2017/12/15/cryptocurrency-token-sale-visualization/
+
+
+
 
 
 Could you do a new hypothesis, for the same question?
 
-
+for the second link, i think i could
 Could you do a new question, for the same topic?
-
+yes, could do something similar to the visuals in the 1st or 2nd link
 
 Could you do a new topic, with the same "style"?
-
+I could find a way to do this for the 2nd one that would be interesting and not too difficult.
 
 ## Data
 
