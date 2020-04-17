@@ -29,10 +29,10 @@ Can you apply the templates to your topics?
 yes
 
 2. Trend related to the news
-
+maybe
 
 3. Who does that?
-
+yes
 
 4. Answering a question people care about
 yes
@@ -55,16 +55,17 @@ the misconception that bike lanes in cities are used by less people than auto la
 ## Examples
 
 What data storytelling example inspires you?
-
+https://www.ocf.berkeley.edu/~raleighmccoy/2017/12/12/cycles-of-change-bike-infrastructure-and-business-turnover/
 
 Could you do a new hypothesis, for the same question?
-
+maybe
 
 Could you do a new question, for the same topic?
-
+yes, accidents maybe?
 
 Could you do a new topic, with the same "style"?
-
+perhaps could style a crosstab like this one depending on what data i want to use 
+https://www.ocf.berkeley.edu/~raleighmccoy/wp-content/uploads/2017/12/correlation_matrix.png
 
 ## Data
 
