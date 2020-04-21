@@ -8,16 +8,19 @@ working on for your project week.
 
 # Ideas for data storytelling - Idea 1
 
-## You
+## Richard Olson
 
 What do you care about?
 
+I care about sports and health
 
 What do you know about?
 
+I know about health and fitness
 
 What decisions do you face?
 
+How to be healthy with a desk job
 
 ## Seven templates
 
@@ -36,6 +39,7 @@ Can you apply the templates to your topics?
 
 4. Answering a question people care about
 
+   Maybe do this what type of businesses use health care more
 
 5. Valuable to businesses
 
@@ -50,39 +54,50 @@ Can you apply the templates to your topics?
 
 What misconceptions do people have about your topic?
 
+Could be construction workers see health care providers more than office workers
 
 ## Examples
 
 What data storytelling example inspires you?
 
+I like ones that use maps:  Such as I found one that was a map of New York City's noisest neighborhoods with ice cream truck noise 
+complaints
 
 Could you do a new hypothesis, for the same question?
 
+I wonder if there was a way to find the healthies or happiest neighborhood.
 
 Could you do a new question, for the same topic?
 
+Maybe the question of where the ice cream trucks are most  (by noise) and the correlation to health weight of new yorkers in those
+areas
 
 Could you do a new topic, with the same "style"?
 
+The above could possibly by somewhat of the same style but combine the data from surveys to new yorkers around the city about 
+their health with the data of the sound complaints from ice cream trucks
 
 ## Data
 
 Where could you search for data about your topic?
 
----
+--- I could search in open data for new york city
 
 # Ideas for data storytelling - Idea 2
 
-## You
+## Richard Olson
 
 What do you care about?
 
+I enjoy sports and health
 
 What do you know about?
 
+I know about health and sports
 
 What decisions do you face?
 
+How to provide for my family or how to be healthy with a desk job.  
 
 ## Seven templates
 
@@ -100,10 +115,13 @@ Can you apply the templates to your topics?
 
 
 4. Answering a question people care about
-
-
+    
+    Another one that I am interested in where people from the NBA come from.  Are the majority 
+    from larger more prestigious universities.
+  
 5. Valuable to businesses
 
+  maybe could look at business and the health of the business by looking at the sick leave at the different jobs
 
 6. What's the most popular?
 
@@ -115,10 +133,14 @@ Can you apply the templates to your topics?
 
 What misconceptions do people have about your topic?
 
+Can't be healthy with certain types of jobs
+
+For the basketball one. It is not necessary to go to a large school to go to the NBA
 
 ## Examples
 
 What data storytelling example inspires you?
+
 
 
 Could you do a new hypothesis, for the same question?
@@ -126,6 +148,7 @@ Could you do a new hypothesis, for the same question?
 
 Could you do a new question, for the same topic?
 
+When being recruited, you don't need to go to a large school to be succesfull
 
 Could you do a new topic, with the same "style"?
 
@@ -133,3 +156,5 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
+For the Sports one I found a data set of all the players in the nba and where they went to college 
