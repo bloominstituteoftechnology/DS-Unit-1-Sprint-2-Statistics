@@ -12,6 +12,7 @@ working on for your project week.
 
 What do you care about?
 
+Artworld sales. Museum donations, secondary market records. Seeing what the relationship is between auction performance and tax deductions from art donations to museums.
 
 What do you know about?
 
