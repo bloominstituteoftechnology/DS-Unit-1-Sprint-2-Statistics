@@ -11,13 +11,13 @@ working on for your project week.
 ## You
 
 What do you care about?
-
+human health
 
 What do you know about?
-
+humman health is effected by environmental factors, diet, fitness routine.
 
 What decisions do you face?
-
+Find a diet that promote the healthy environment of human gut microbiome
 
 ## Seven templates
 
@@ -26,30 +26,30 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+Does human gut microbiome varies in USA, China, Japan, India, Germany?
 
 2. Trend related to the news
-
+A diet recommendation simply based on gut microbiome
 
 3. Who does that?
 
 
 4. Answering a question people care about
-
+Has homo sapien gut microbiome evolved to embrace diverse food culture
 
 5. Valuable to businesses
-
+Health, diet cult always link to big $$
 
 6. What's the most popular?
-
+What is the most healthy food for gut microbiome? Some said bone broth, maybe my data (if available) will say something else
 
 7. Cost/Money rankings
-
+A quick drink power mix to promote gut health for homo sapiens who live such a fast-paced life than their ancestors
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+We know we are carrying more bacteria in our guts than our total number of body cells. However, we have no idea how we can please our bacteria by eating the right food.   
 
 ## Examples
 
