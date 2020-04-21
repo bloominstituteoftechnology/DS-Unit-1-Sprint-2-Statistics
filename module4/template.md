@@ -11,12 +11,19 @@ working on for your project week.
 ## You
 
 What do you care about?
-
+cyperbulling
 
 What do you know about?
 
 
 What decisions do you face?
+
+
+the growth of internet bully case from time to time
+kids or adults,who will have more rate of the cyper bully.
+who get more bully compare with female and male.
+the law growth of cyper bully
+cyper bully contrbute to mental health
 
 
 ## Seven templates
@@ -27,21 +34,21 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
-
+nationwide
 2. Trend related to the news
-
+  
 
 3. Who does that?
-
+reporter and school ministrator 
 
 4. Answering a question people care about
-
+is bulling so close to everyone
 
 5. Valuable to businesses
 
 
 6. What's the most popular?
-
+who suffers more from cyperbulling
 
 7. Cost/Money rankings
 
@@ -49,12 +56,13 @@ Can you apply the templates to your topics?
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+cyperbulling is a small problem.
 
 ## Examples
 
 What data storytelling example inspires you?
 
+How Machines Destroy/Create Jobs
 
 Could you do a new hypothesis, for the same question?
 
@@ -68,7 +76,7 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
-
+data.austintexas.gov
 ---
 
 # Ideas for data storytelling - Idea 2
@@ -76,13 +84,12 @@ Where could you search for data about your topic?
 ## You
 
 What do you care about?
-
-
+skin product in amazon
 What do you know about?
-
+a lot of brands names
 
 What decisions do you face?
-
+how one of the skin product become most popular in amazon.
 
 ## Seven templates
 
@@ -91,35 +98,34 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+nation wide
 
 2. Trend related to the news
-
-
+best products for skin
 3. Who does that?
-
+all the people use skin product
 
 4. Answering a question people care about
-
+best skin product in amazon 
 
 5. Valuable to businesses
 
 
 6. What's the most popular?
 
-
+which one is sold most and get most reviews, through the year did they change.
 7. Cost/Money rankings
-
+which one will be more expensive among the most review products
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+The ranking is always same 
 
 ## Examples
 
 What data storytelling example inspires you?
-
+How Seattle Residents Determine Housing
 
 Could you do a new hypothesis, for the same question?
 
@@ -133,3 +139,4 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+amazon dataset
