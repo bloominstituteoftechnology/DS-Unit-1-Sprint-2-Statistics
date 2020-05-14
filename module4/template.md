@@ -11,13 +11,26 @@ working on for your project week.
 ## You
 
 What do you care about?
-
-
+    Educational outcomes
+    Food
+    health
+    Income    
 What do you know about?
-
-
+    retail
+    cooking
+    small businesses
+    
+    
 What decisions do you face?
-
+    what school should i send my kids to
+    whats should i cook for dinner
+    where should i invest money
+    where is the best place to relocate to? 
+        real estate value 
+        cost of living / income
+        taxes / regulations
+        
+    
 
 ## Seven templates
 
@@ -26,6 +39,8 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
+
+    states with the 
 
 
 2. Trend related to the news

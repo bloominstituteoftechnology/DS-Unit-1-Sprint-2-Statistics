@@ -1,0 +1,81 @@
+Statistical inference is the act of generalizing from sample stats to larger
+  general population with an calculated degree of certainty
+
+chi square test - how correllated are 2 variables
+    single sample  (test for goodness of fit)
+        how do values of observed variable compare to a expected frequency (null hypothesis)
+    2 sample (Test for independece)
+        compare two sets of observations 
+        H_0 = the two variables are independent
+        
+    chi2 = ((observed - expected)**2/ expected).sum()
+expected frequency = total observation / number of categories.  
+p- value-  measure of statistical significance= .05 is standard- chance
+
+t-test -compares a sample to a concept of a population -how representative is 
+        the sample of the population?  how different is the sample mean (xbar) from th
+        population mean (mu) 
+        ------
+        5 parts
+        null , all, confidce pop, sample mean 
+null hypothesis  -  this is a fair coin   HsubZero
+alt hypothesis  -  this is a weighted coin
+bar(x) => Sample mean = this is the observed value  
+ata from the study 
+ 
+Mu -> population parameter-    the population mean theoretical 
+
+
+confidence level (alpha)    =  what probabilty is required to believe the null hypothesis 
+                    95% is the convention - the p-value is the inverse
+* watch recordding. 
+   use  t-dist  table  95% interval = p =  0.025 (2.5% in either tail  (half of 5%))
+
+confidence interval calculated is relative to the sample mean.. 
+margin of error = +/- 
+(lower, mean, upper)  =
+
+pyplot.axvline(x=lower, color= 'blue)
+pyplot.axvline(x=upper, color='red')
+pyplot.axvline(x=mean, color = 'green')
+margin_of_error = upper - mean 
+
+plt.errorbar(0,mean,yerr=maergin_of_error, fmt='o')
+plt.show()
+plt.bar
+
+plt.errorbar
+
+   
+sigma = population 
+s =  sample 
+
+
+** np.std( , ddof)  delta deg freedom. - calculate the sample standard deviation. the default it to cal the population std
+pandas does the opposite -- calculates the sample statistic by default (ddof)
+
+
+'i failed to reject the null hypothesis'  aka i think its true
+
+
+calcualate t test without pandas
+
+
+
+----
+np.std (obsertavtr, ddof=1)
+
+ tsat np.mean () for hte sample mean
+ t= (x_bar - mu)( / (s / np.sqrt(n)) 
+ 
+ t = (samplemean - populationmean) / ( s / np.sqrt(x))
+ 
+ null hypothesis is that which, if DISPROVED, show what you are trying to prove
+ must be true. 
+ 
+ its more acceptible to disprove the null than to prove the alt
+ 
+--- ANOVA - two or more population means are equal, general case of t-test 
+
+
+ 
