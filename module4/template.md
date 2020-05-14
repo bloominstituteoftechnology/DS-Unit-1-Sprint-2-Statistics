@@ -95,45 +95,47 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
-
+- Doesn't related
 
 2. Trend related to the news
-
+- There's no trend at all as you can upload an app from any where in the world
 
 3. Who does that?
-
+- Developer/ company are the  one who post/publish the app
 
 4. Answering a question people care about
-
+- Does app with less review always bad?
 
 5. Valuable to businesses
-
+- Yes, business can deal with each other for advertising on popular app
 
 6. What's the most popular?
-
+- NA
 
 7. Cost/Money rankings
-
+- NA
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
+- App with less review is not legit, in other word; it's a scam
 
 ## Examples
 
 What data storytelling example inspires you?
-
+- Google play store app update
 
 Could you do a new hypothesis, for the same question?
-
+- Null Hyp: App with few reviews doesn't have good rating
+- Alternative Hyp: App with a few reviews have good rating
 
 Could you do a new question, for the same topic?
-
+- yes
 
 Could you do a new topic, with the same "style"?
-
+- yes
 
 ## Data
 
 Where could you search for data about your topic?
+https://www.kaggle.com/lava18/google-play-store-apps
