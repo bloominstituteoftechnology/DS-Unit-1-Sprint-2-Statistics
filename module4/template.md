@@ -26,24 +26,31 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
+
 How did the Introduction of T20 Cricket affect cricket's overall popularity in different regions in the world.
 
 2. Trend related to the news
+
 How did COVID19 affect international cricket.
 
 3. Who does that?
+
 What are the demographics of the people who play cricket by region.
 
 4. Answering a question people care about
+
 Are the constant changes to it's format weakening or strengthening the sport?
 
 5. Valuable to businesses
+
 How do popular cricket events affect the economic activity of the area's businesses?
 
 6. What's the most popular?
+
 Which format of the game is currenty the most popular and will that change?
 
 7. Cost/Money rankings
+
 Which countries and players make the most profit off of cricket.
 
 ## Misconceptions
@@ -77,12 +84,15 @@ ESPN Cricinfo and the official ICC website.
 ## You
 
 What do you care about?
+
 Esports
 
 What do you know about?
+
 Esports is steadily growing more and more popular.
 
 What decisions do you face?
+
 What datasets should I seek to acquire.
 
 ## Seven templates
@@ -92,30 +102,38 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 Can you apply the templates to your topics? 
 
 1. Geographic Variation
+
 What is the most popular Esports game depending on the region.
 
 2. Trend related to the news
+
 How has COVID19 affected Esports.
 
 3. Who does that?
+
 Demographics of the people who view and participate in Esports.
 
 4. Answering a question people care about
+
 How did the introduction of the MOBA genre effect Esports?
 
 5. Valuable to businesses
+
 What types of businesses are most affected by the success of Esports?
 
 6. What's the most popular?
+
 What is the most successful genre in Esports.
 
 7. Cost/Money rankings
+
 Which game makes the most profit from Esports.
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-There is low profit to be made in Esports.
+
+There is very low profit to be made in Esports.
 
 ## Examples
 
@@ -127,6 +145,7 @@ Could you do a new hypothesis, for the same question?
 
 
 Could you do a new question, for the same topic?
+
 How did this affect the interest in conventional sports among the core demographic of Esports viewers.
 
 Could you do a new topic, with the same "style"?
@@ -135,4 +154,5 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
 The official websites of the top Esports games.
