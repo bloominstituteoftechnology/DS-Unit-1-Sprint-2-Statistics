@@ -8,24 +8,15 @@ working on for your project week.
 
 # Ideas for data storytelling - Idea 1
 
-The Idea I had, even before Lambda School, was building a 
-Quantum Disease Classification. 
-
 ## You
 
 What do you care about?
 
-    I care about Humanity, but just in general.
-
 
 What do you know about?
 
-    I have uncanny knowlage about Medicine
-
 
 What decisions do you face?
-
-    Immediatly I need to re examine my health. 
 
 
 ## Seven templates
@@ -36,40 +27,28 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
-    billings, Montana 
 
 2. Trend related to the news
 
-    A Trend that I see is obviously the coronaVirus, and Healthcare in general    
 
 3. Who does that?
 
-    A possible customer is anyone care about their health.
 
 4. Answering a question people care about
 
-    "Do I have {Disease_Name}?"
 
 5. Valuable to businesses
-
-    I feel that a Quantum Disease classifier would be useful for hospitals, but the main
-    problem would the political issue of getting a program like this approved for hospitals
 
 
 6. What's the most popular?
 
-    Hospitals Have their own Disease classifier
-
 
 7. Cost/Money rankings
 
-    I know that Slicer 3D is free, but it's also hard to use.
 
 ## Misconceptions
 
 What misconceptions do people have about your topic?
-
-
 
 
 ## Examples
