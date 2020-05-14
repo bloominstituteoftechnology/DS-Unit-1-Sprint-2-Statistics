@@ -95,13 +95,13 @@ Where could you search for data about your topic?
 ## You
 
 What do you care about?
-    justice 
-
+     boxers
 What do you know about?
-
-
+     boxing
 What decisions do you face?
-    
+    should a boxer retire?
+    what prospects do they have 
+     how can a boxer protect their health using data ?
 
 ## Seven templates
 
@@ -111,12 +111,13 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
 
-
+    where are the best boxers from in the US?
+    
 2. Trend related to the news
-
+    
 
 3. Who does that?
-
+   
 
 4. Answering a question people care about
 
@@ -139,8 +140,14 @@ What misconceptions do people have about your topic?
 
 What data storytelling example inspires you?
 
+    https://bleacherreport.com/articles/1659200-breaking-down-boxings-most-important-statistics
+except that its mostl pseudo-statistics.
+    Can  punch stats tell us who's the better fighter?
+         
+   
 
 Could you do a new hypothesis, for the same question?
+
 
 
 Could you do a new question, for the same topic?
@@ -152,4 +159,7 @@ Could you do a new topic, with the same "style"?
 ## Data
 
 Where could you search for data about your topic?
+
+https://boxstat.co/contact
+ boxrec.com
 
