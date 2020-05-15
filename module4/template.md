@@ -25,25 +25,32 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 
 Can you apply the templates to your topics? 
 
-1. Geographic Variation
+1. Geographic Variation:
+
 Possibly but probably not
 
-2. Trend related to the news
+2. Trend related to the news:
+
 Yes
 
-3. Who does that?
+3. Who does that?:
+
 No
 
-4. Answering a question people care about
-No
+4. Answering a question people care about:
 
-5. Valuable to businesses
+Yes
+
+5. Valuable to businesses:
+
 Possiblt but probably no.
 
-6. What's the most popular?
+6. What's the most popular?:
+
 No
 
-7. Cost/Money rankings
+7. Cost/Money rankings:
+
 No
 
 ## Misconceptions
@@ -90,25 +97,32 @@ Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explai
 
 Can you apply the templates to your topics? 
 
-1. Geographic Variation
+1. Geographic Variation:
+
 Yes
 
-2. Trend related to the news
+2. Trend related to the news:
+
 Possibly
 
-3. Who does that?
+3. Who does that?:
+
 Yes but probably won't.
 
-4. Answering a question people care about
+4. Answering a question people care about:
+
 Yes
 
-5. Valuable to businesses
+5. Valuable to businesses:
+
 No
 
-6. What's the most popular?
+6. What's the most popular?:
+
 Yes
 
-7. Cost/Money rankings
+7. Cost/Money rankings:
+
 Possibly, but I won't use this
 
 ## Misconceptions
