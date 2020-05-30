@@ -44,41 +44,41 @@ Can you apply the templates to your topics?
 
 1. Geographic Variation
  
-  * Find out what state turns out the most jackpot winners.
+   * Find out what state turns out the most jackpot winners.
 
 2. Trend related to the news
 
-  * How the financial health of our country right now is affecting the purchases of Powerball tickets?
-  * Does the financial health of our country affect the odds of winning the jackpot?
-  * Does the current economy affect the rollover frequency?
+   * How the financial health of our country right now is affecting the purchases of Powerball tickets?
+   * Does the financial health of our country affect the odds of winning the jackpot?
+   * Does the current economy affect the rollover frequency?
 
 3. Who does that?
 
-  * What are the people winning the jackpots like (i.e. gender, income level, race, location, age, etc.)?
+   * What are the people winning the jackpots like (i.e. gender, income level, race, location, age, etc.)?
 
 4. Answering a question people care about
 
-  * Is there a way to accurately predict the winning numbers of future jackpots?
+   * Is there a way to accurately predict the winning numbers of future jackpots?
 
 5. Valuable to businesses
 
-  * What are the most common types of businesses that are selling winning tickets?
-  * What areas are the businesses located in (i.e. type of neighborhood, state, major chain, etc.)?
-  * What types of products do the businesses sell other then lottery?
-  * What other types of lottery tickets do the businesses sell?
+   * What are the most common types of businesses that are selling winning tickets?
+   * What areas are the businesses located in (i.e. type of neighborhood, state, major chain, etc.)?
+   * What types of products do the businesses sell other then lottery?
+   * What other types of lottery tickets do the businesses sell?
 
 6. What's the most popular?
 
-  * Use a "bar chart race" chart to show how the jackpots have changed over the life of Powerball games.
-  * Use a graph to show the most pulled numbers.
-  * Plot the most often numbers drawn together.
-  * Plot the most pulled Powerball numbers.
+   * Use a "bar chart race" chart to show how the jackpots have changed over the life of Powerball games.
+   * Use a graph to show the most pulled numbers.
+   * Plot the most often numbers drawn together.
+   * Plot the most pulled Powerball numbers.
 
 7. Cost/Money rankings
 
-  * How much money people spend on tickets vs the return they receive?
-  * How much money people spend on tickets vs their income level?
-  * When are the most tickets sold?
+   * How much money people spend on tickets vs the return they receive?
+   * How much money people spend on tickets vs their income level?
+   * When are the most tickets sold?
 
 ## Misconceptions
 
