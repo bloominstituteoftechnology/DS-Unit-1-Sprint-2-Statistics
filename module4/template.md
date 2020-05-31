@@ -92,6 +92,7 @@ What misconceptions do people have about your topic?
 
 What data storytelling example inspires you?
 
+  * https://www.lottonumbers.com/powerball/common-numbers
   * 
 
 Could you do a new hypothesis, for the same question?
