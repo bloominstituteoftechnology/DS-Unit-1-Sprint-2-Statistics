@@ -1,0 +1,2231 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.7.3"
+    },
+    "colab": {
+      "name": "LS_DS_121_t_tests_Assignment.ipynb.ipynb",
+      "provenance": [],
+      "include_colab_link": true
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/JonRivera/DS-Unit-1-Sprint-2-Statistics/blob/master/module1/LS_DS_121_t_tests_Assignment_ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Sa5KWMO1ngPN",
+        "colab_type": "text"
+      },
+      "source": [
+        "<img align=\"left\" src=\"https://lever-client-logos.s3.amazonaws.com/864372b1-534c-480e-acd5-9711f850815c-1524247202159.png\" width=200>\n",
+        "<br></br>\n",
+        "<br></br>\n",
+        "\n",
+        "## *Data Science Unit 1 Sprint 2 Assignment 1*\n",
+        "\n",
+        "# Apply the t-test to real data"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "gZDO3KBZOJNp",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Practice 1-Sample T-tests\n",
+        "\n",
+        "One Sample t-tests determine whether or not a sample mean is statistically different from some known (or hypothesized) population mean. \n",
+        "\n",
+        "### 1) Load the Data\n",
+        "- Use the [automobile dataset](https://archive.ics.uci.edu/ml/datasets/Automobile)\n",
+        "- Fix the column headers\n",
+        "- Make sure NaNs are used to indicate missing values\n",
+        "\n",
+        "Feel free to add code cells and text cells as needed throughout the assignment."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "cj-d0_8wWJjj",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "### YOUR WORK HERE\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "from scipy import stats\n",
+        "columns =['symboling', 'normalized-losses','make','fuel-type','aspiration','num-of-doors',\n",
+        "'body-style','drive-wheels','engine-location','wheel-base','length','width','height','curb-weight',\n",
+        "'engine-type','num-of-cylinders','engine-size','fuel-system','bore','stroke','compression-ratio','horsepower',\n",
+        "'peak-rpm','city-mpg','highway-mpg','price']\n",
+        "df = pd.read_csv(\"https://archive.ics.uci.edu/ml/machine-learning-databases/autos/imports-85.data\", names = columns)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "g3sVfNgaz3ec",
+        "colab_type": "code",
+        "outputId": "9f167cb5-276f-450c-8064-f60c755b4d6c",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 276
+        }
+      },
+      "source": [
+        "print(df.head(),df.tail(),df.shape)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "   symboling normalized-losses         make  ... city-mpg highway-mpg  price\n",
+            "0          3               NaN  alfa-romero  ...       21          27  13495\n",
+            "1          3               NaN  alfa-romero  ...       21          27  16500\n",
+            "2          1               NaN  alfa-romero  ...       19          26  16500\n",
+            "3          2               164         audi  ...       24          30  13950\n",
+            "4          2               164         audi  ...       18          22  17450\n",
+            "\n",
+            "[5 rows x 26 columns]      symboling normalized-losses   make  ... city-mpg highway-mpg  price\n",
+            "200         -1                95  volvo  ...       23          28  16845\n",
+            "201         -1                95  volvo  ...       19          25  19045\n",
+            "202         -1                95  volvo  ...       18          23  21485\n",
+            "203         -1                95  volvo  ...       26          27  22470\n",
+            "204         -1                95  volvo  ...       19          25  22625\n",
+            "\n",
+            "[5 rows x 26 columns] (205, 26)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EDMUDJYH13wt",
+        "colab_type": "code",
+        "outputId": "1c9f619f-f8a3-4cb5-a807-34add2cc49c4",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 309
+        }
+      },
+      "source": [
+        "#Clean Data, Put headers, replace ? with NaN values\n",
+        "df = df.replace({\"?\":np.NaN}) \n",
+        "df.head()"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>symboling</th>\n",
+              "      <th>normalized-losses</th>\n",
+              "      <th>make</th>\n",
+              "      <th>fuel-type</th>\n",
+              "      <th>aspiration</th>\n",
+              "      <th>num-of-doors</th>\n",
+              "      <th>body-style</th>\n",
+              "      <th>drive-wheels</th>\n",
+              "      <th>engine-location</th>\n",
+              "      <th>wheel-base</th>\n",
+              "      <th>length</th>\n",
+              "      <th>width</th>\n",
+              "      <th>height</th>\n",
+              "      <th>curb-weight</th>\n",
+              "      <th>engine-type</th>\n",
+              "      <th>num-of-cylinders</th>\n",
+              "      <th>engine-size</th>\n",
+              "      <th>fuel-system</th>\n",
+              "      <th>bore</th>\n",
+              "      <th>stroke</th>\n",
+              "      <th>compression-ratio</th>\n",
+              "      <th>horsepower</th>\n",
+              "      <th>peak-rpm</th>\n",
+              "      <th>city-mpg</th>\n",
+              "      <th>highway-mpg</th>\n",
+              "      <th>price</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>3</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>alfa-romero</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>two</td>\n",
+              "      <td>convertible</td>\n",
+              "      <td>rwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>88.6</td>\n",
+              "      <td>168.8</td>\n",
+              "      <td>64.1</td>\n",
+              "      <td>48.8</td>\n",
+              "      <td>2548</td>\n",
+              "      <td>dohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>130</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>3.47</td>\n",
+              "      <td>2.68</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>111</td>\n",
+              "      <td>5000</td>\n",
+              "      <td>21</td>\n",
+              "      <td>27</td>\n",
+              "      <td>13495</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>3</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>alfa-romero</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>two</td>\n",
+              "      <td>convertible</td>\n",
+              "      <td>rwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>88.6</td>\n",
+              "      <td>168.8</td>\n",
+              "      <td>64.1</td>\n",
+              "      <td>48.8</td>\n",
+              "      <td>2548</td>\n",
+              "      <td>dohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>130</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>3.47</td>\n",
+              "      <td>2.68</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>111</td>\n",
+              "      <td>5000</td>\n",
+              "      <td>21</td>\n",
+              "      <td>27</td>\n",
+              "      <td>16500</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>1</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>alfa-romero</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>two</td>\n",
+              "      <td>hatchback</td>\n",
+              "      <td>rwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>94.5</td>\n",
+              "      <td>171.2</td>\n",
+              "      <td>65.5</td>\n",
+              "      <td>52.4</td>\n",
+              "      <td>2823</td>\n",
+              "      <td>ohcv</td>\n",
+              "      <td>six</td>\n",
+              "      <td>152</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>2.68</td>\n",
+              "      <td>3.47</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>154</td>\n",
+              "      <td>5000</td>\n",
+              "      <td>19</td>\n",
+              "      <td>26</td>\n",
+              "      <td>16500</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>2</td>\n",
+              "      <td>164</td>\n",
+              "      <td>audi</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>99.8</td>\n",
+              "      <td>176.6</td>\n",
+              "      <td>66.2</td>\n",
+              "      <td>54.3</td>\n",
+              "      <td>2337</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>109</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>3.19</td>\n",
+              "      <td>3.40</td>\n",
+              "      <td>10.0</td>\n",
+              "      <td>102</td>\n",
+              "      <td>5500</td>\n",
+              "      <td>24</td>\n",
+              "      <td>30</td>\n",
+              "      <td>13950</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>2</td>\n",
+              "      <td>164</td>\n",
+              "      <td>audi</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>4wd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>99.4</td>\n",
+              "      <td>176.6</td>\n",
+              "      <td>66.4</td>\n",
+              "      <td>54.3</td>\n",
+              "      <td>2824</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>five</td>\n",
+              "      <td>136</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>3.19</td>\n",
+              "      <td>3.40</td>\n",
+              "      <td>8.0</td>\n",
+              "      <td>115</td>\n",
+              "      <td>5500</td>\n",
+              "      <td>18</td>\n",
+              "      <td>22</td>\n",
+              "      <td>17450</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   symboling normalized-losses         make  ... city-mpg highway-mpg  price\n",
+              "0          3               NaN  alfa-romero  ...       21          27  13495\n",
+              "1          3               NaN  alfa-romero  ...       21          27  16500\n",
+              "2          1               NaN  alfa-romero  ...       19          26  16500\n",
+              "3          2               164         audi  ...       24          30  13950\n",
+              "4          2               164         audi  ...       18          22  17450\n",
+              "\n",
+              "[5 rows x 26 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 39
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "FD-Pk07-Z-xk",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 2) Pretend that this dataset represents the cars at a used car lot in your local town. \n",
+        "\n",
+        "- Use df.sample() to pick a random sample of 10 cars. Note that because this sample is random we are going to set the `random_state` so that all of us in the class get the same random sample. Please set your random state to `30` when using `df.sample()`\n",
+        "\n",
+        "Is your sample reflective of the population value in regards to highway-mpg? Find the mean for `highway-mpg` for the entire dataset and compare your sample mean estimate to that value. Can you say that they are different? "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6qXiJGTwdG2N",
+        "colab_type": "code",
+        "outputId": "34da7ea7-701e-4ae0-bd6a-05dbaec5817a",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 429
+        }
+      },
+      "source": [
+        "### YOUR WORK HERE\n",
+        "#Sample of 10 cars with a random state of 30 \n",
+        "df_sample = df.sample(10, random_state=30)\n",
+        "df_sample\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>symboling</th>\n",
+              "      <th>normalized-losses</th>\n",
+              "      <th>make</th>\n",
+              "      <th>fuel-type</th>\n",
+              "      <th>aspiration</th>\n",
+              "      <th>num-of-doors</th>\n",
+              "      <th>body-style</th>\n",
+              "      <th>drive-wheels</th>\n",
+              "      <th>engine-location</th>\n",
+              "      <th>wheel-base</th>\n",
+              "      <th>length</th>\n",
+              "      <th>width</th>\n",
+              "      <th>height</th>\n",
+              "      <th>curb-weight</th>\n",
+              "      <th>engine-type</th>\n",
+              "      <th>num-of-cylinders</th>\n",
+              "      <th>engine-size</th>\n",
+              "      <th>fuel-system</th>\n",
+              "      <th>bore</th>\n",
+              "      <th>stroke</th>\n",
+              "      <th>compression-ratio</th>\n",
+              "      <th>horsepower</th>\n",
+              "      <th>peak-rpm</th>\n",
+              "      <th>city-mpg</th>\n",
+              "      <th>highway-mpg</th>\n",
+              "      <th>price</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>121</th>\n",
+              "      <td>1</td>\n",
+              "      <td>154</td>\n",
+              "      <td>plymouth</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>93.7</td>\n",
+              "      <td>167.3</td>\n",
+              "      <td>63.8</td>\n",
+              "      <td>50.8</td>\n",
+              "      <td>1989</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>90</td>\n",
+              "      <td>2bbl</td>\n",
+              "      <td>2.97</td>\n",
+              "      <td>3.23</td>\n",
+              "      <td>9.4</td>\n",
+              "      <td>68</td>\n",
+              "      <td>5500</td>\n",
+              "      <td>31</td>\n",
+              "      <td>38</td>\n",
+              "      <td>6692</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>176</th>\n",
+              "      <td>-1</td>\n",
+              "      <td>65</td>\n",
+              "      <td>toyota</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>102.4</td>\n",
+              "      <td>175.6</td>\n",
+              "      <td>66.5</td>\n",
+              "      <td>54.9</td>\n",
+              "      <td>2414</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>122</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>3.31</td>\n",
+              "      <td>3.54</td>\n",
+              "      <td>8.7</td>\n",
+              "      <td>92</td>\n",
+              "      <td>4200</td>\n",
+              "      <td>27</td>\n",
+              "      <td>32</td>\n",
+              "      <td>10898</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>24</th>\n",
+              "      <td>1</td>\n",
+              "      <td>148</td>\n",
+              "      <td>dodge</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>hatchback</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>93.7</td>\n",
+              "      <td>157.3</td>\n",
+              "      <td>63.8</td>\n",
+              "      <td>50.6</td>\n",
+              "      <td>1967</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>90</td>\n",
+              "      <td>2bbl</td>\n",
+              "      <td>2.97</td>\n",
+              "      <td>3.23</td>\n",
+              "      <td>9.4</td>\n",
+              "      <td>68</td>\n",
+              "      <td>5500</td>\n",
+              "      <td>31</td>\n",
+              "      <td>38</td>\n",
+              "      <td>6229</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>88</th>\n",
+              "      <td>-1</td>\n",
+              "      <td>137</td>\n",
+              "      <td>mitsubishi</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>96.3</td>\n",
+              "      <td>172.4</td>\n",
+              "      <td>65.4</td>\n",
+              "      <td>51.6</td>\n",
+              "      <td>2403</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>110</td>\n",
+              "      <td>spdi</td>\n",
+              "      <td>3.17</td>\n",
+              "      <td>3.46</td>\n",
+              "      <td>7.5</td>\n",
+              "      <td>116</td>\n",
+              "      <td>5500</td>\n",
+              "      <td>23</td>\n",
+              "      <td>30</td>\n",
+              "      <td>9279</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>72</th>\n",
+              "      <td>3</td>\n",
+              "      <td>142</td>\n",
+              "      <td>mercedes-benz</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>two</td>\n",
+              "      <td>convertible</td>\n",
+              "      <td>rwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>96.6</td>\n",
+              "      <td>180.3</td>\n",
+              "      <td>70.5</td>\n",
+              "      <td>50.8</td>\n",
+              "      <td>3685</td>\n",
+              "      <td>ohcv</td>\n",
+              "      <td>eight</td>\n",
+              "      <td>234</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>3.46</td>\n",
+              "      <td>3.10</td>\n",
+              "      <td>8.3</td>\n",
+              "      <td>155</td>\n",
+              "      <td>4750</td>\n",
+              "      <td>16</td>\n",
+              "      <td>18</td>\n",
+              "      <td>35056</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>103</th>\n",
+              "      <td>0</td>\n",
+              "      <td>108</td>\n",
+              "      <td>nissan</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>100.4</td>\n",
+              "      <td>184.6</td>\n",
+              "      <td>66.5</td>\n",
+              "      <td>55.1</td>\n",
+              "      <td>3060</td>\n",
+              "      <td>ohcv</td>\n",
+              "      <td>six</td>\n",
+              "      <td>181</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>3.43</td>\n",
+              "      <td>3.27</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>152</td>\n",
+              "      <td>5200</td>\n",
+              "      <td>19</td>\n",
+              "      <td>25</td>\n",
+              "      <td>13499</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>26</th>\n",
+              "      <td>1</td>\n",
+              "      <td>148</td>\n",
+              "      <td>dodge</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>93.7</td>\n",
+              "      <td>157.3</td>\n",
+              "      <td>63.8</td>\n",
+              "      <td>50.6</td>\n",
+              "      <td>1989</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>90</td>\n",
+              "      <td>2bbl</td>\n",
+              "      <td>2.97</td>\n",
+              "      <td>3.23</td>\n",
+              "      <td>9.4</td>\n",
+              "      <td>68</td>\n",
+              "      <td>5500</td>\n",
+              "      <td>31</td>\n",
+              "      <td>38</td>\n",
+              "      <td>7609</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>20</th>\n",
+              "      <td>0</td>\n",
+              "      <td>81</td>\n",
+              "      <td>chevrolet</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>94.5</td>\n",
+              "      <td>158.8</td>\n",
+              "      <td>63.6</td>\n",
+              "      <td>52.0</td>\n",
+              "      <td>1909</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>90</td>\n",
+              "      <td>2bbl</td>\n",
+              "      <td>3.03</td>\n",
+              "      <td>3.11</td>\n",
+              "      <td>9.6</td>\n",
+              "      <td>70</td>\n",
+              "      <td>5400</td>\n",
+              "      <td>38</td>\n",
+              "      <td>43</td>\n",
+              "      <td>6575</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>155</th>\n",
+              "      <td>0</td>\n",
+              "      <td>91</td>\n",
+              "      <td>toyota</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>wagon</td>\n",
+              "      <td>4wd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>95.7</td>\n",
+              "      <td>169.7</td>\n",
+              "      <td>63.6</td>\n",
+              "      <td>59.1</td>\n",
+              "      <td>3110</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>92</td>\n",
+              "      <td>2bbl</td>\n",
+              "      <td>3.05</td>\n",
+              "      <td>3.03</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>62</td>\n",
+              "      <td>4800</td>\n",
+              "      <td>27</td>\n",
+              "      <td>32</td>\n",
+              "      <td>8778</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>185</th>\n",
+              "      <td>2</td>\n",
+              "      <td>94</td>\n",
+              "      <td>volkswagen</td>\n",
+              "      <td>gas</td>\n",
+              "      <td>std</td>\n",
+              "      <td>four</td>\n",
+              "      <td>sedan</td>\n",
+              "      <td>fwd</td>\n",
+              "      <td>front</td>\n",
+              "      <td>97.3</td>\n",
+              "      <td>171.7</td>\n",
+              "      <td>65.5</td>\n",
+              "      <td>55.7</td>\n",
+              "      <td>2212</td>\n",
+              "      <td>ohc</td>\n",
+              "      <td>four</td>\n",
+              "      <td>109</td>\n",
+              "      <td>mpfi</td>\n",
+              "      <td>3.19</td>\n",
+              "      <td>3.40</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>85</td>\n",
+              "      <td>5250</td>\n",
+              "      <td>27</td>\n",
+              "      <td>34</td>\n",
+              "      <td>8195</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "     symboling normalized-losses           make  ... city-mpg highway-mpg  price\n",
+              "121          1               154       plymouth  ...       31          38   6692\n",
+              "176         -1                65         toyota  ...       27          32  10898\n",
+              "24           1               148          dodge  ...       31          38   6229\n",
+              "88          -1               137     mitsubishi  ...       23          30   9279\n",
+              "72           3               142  mercedes-benz  ...       16          18  35056\n",
+              "103          0               108         nissan  ...       19          25  13499\n",
+              "26           1               148          dodge  ...       31          38   7609\n",
+              "20           0                81      chevrolet  ...       38          43   6575\n",
+              "155          0                91         toyota  ...       27          32   8778\n",
+              "185          2                94     volkswagen  ...       27          34   8195\n",
+              "\n",
+              "[10 rows x 26 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 91
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "oxsx9cN7dUPp",
+        "colab_type": "text"
+      },
+      "source": [
+        "The salesman says the cars he sells typically have a fuel efficiency of about 35 miles per gallon on the highway. You want to verify his claim but can only test 10 cars. Using your sample of 10, test his claim and report your results."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6pXyclB9ZXCn",
+        "colab_type": "code",
+        "outputId": "4e7001f1-62c8-4f7a-e848-0ec2d741fd02",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 296
+        }
+      },
+      "source": [
+        "### YOUR WORK HERE\n",
+        "# Check for descriptive statistics\n",
+        "# Just from this summary we can see we have an average of 32.8 mpg for highway\n",
+        "df_sample.describe()"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>symboling</th>\n",
+              "      <th>wheel-base</th>\n",
+              "      <th>length</th>\n",
+              "      <th>width</th>\n",
+              "      <th>height</th>\n",
+              "      <th>curb-weight</th>\n",
+              "      <th>engine-size</th>\n",
+              "      <th>compression-ratio</th>\n",
+              "      <th>city-mpg</th>\n",
+              "      <th>highway-mpg</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "      <td>10.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>mean</th>\n",
+              "      <td>0.600000</td>\n",
+              "      <td>96.430000</td>\n",
+              "      <td>169.500000</td>\n",
+              "      <td>65.300000</td>\n",
+              "      <td>53.120000</td>\n",
+              "      <td>2473.800000</td>\n",
+              "      <td>120.800000</td>\n",
+              "      <td>8.930000</td>\n",
+              "      <td>27.000000</td>\n",
+              "      <td>32.800000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>std</th>\n",
+              "      <td>1.264911</td>\n",
+              "      <td>2.959373</td>\n",
+              "      <td>9.499474</td>\n",
+              "      <td>2.173067</td>\n",
+              "      <td>2.916162</td>\n",
+              "      <td>609.044935</td>\n",
+              "      <td>48.670776</td>\n",
+              "      <td>0.634298</td>\n",
+              "      <td>6.411795</td>\n",
+              "      <td>7.269418</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>min</th>\n",
+              "      <td>-1.000000</td>\n",
+              "      <td>93.700000</td>\n",
+              "      <td>157.300000</td>\n",
+              "      <td>63.600000</td>\n",
+              "      <td>50.600000</td>\n",
+              "      <td>1909.000000</td>\n",
+              "      <td>90.000000</td>\n",
+              "      <td>7.500000</td>\n",
+              "      <td>16.000000</td>\n",
+              "      <td>18.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>25%</th>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>93.900000</td>\n",
+              "      <td>160.925000</td>\n",
+              "      <td>63.800000</td>\n",
+              "      <td>50.800000</td>\n",
+              "      <td>1989.000000</td>\n",
+              "      <td>90.000000</td>\n",
+              "      <td>8.775000</td>\n",
+              "      <td>24.000000</td>\n",
+              "      <td>30.500000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>50%</th>\n",
+              "      <td>0.500000</td>\n",
+              "      <td>96.000000</td>\n",
+              "      <td>170.700000</td>\n",
+              "      <td>64.600000</td>\n",
+              "      <td>51.800000</td>\n",
+              "      <td>2307.500000</td>\n",
+              "      <td>100.500000</td>\n",
+              "      <td>9.000000</td>\n",
+              "      <td>27.000000</td>\n",
+              "      <td>33.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>75%</th>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>97.125000</td>\n",
+              "      <td>174.800000</td>\n",
+              "      <td>66.250000</td>\n",
+              "      <td>55.050000</td>\n",
+              "      <td>2898.500000</td>\n",
+              "      <td>119.000000</td>\n",
+              "      <td>9.400000</td>\n",
+              "      <td>31.000000</td>\n",
+              "      <td>38.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>max</th>\n",
+              "      <td>3.000000</td>\n",
+              "      <td>102.400000</td>\n",
+              "      <td>184.600000</td>\n",
+              "      <td>70.500000</td>\n",
+              "      <td>59.100000</td>\n",
+              "      <td>3685.000000</td>\n",
+              "      <td>234.000000</td>\n",
+              "      <td>9.600000</td>\n",
+              "      <td>38.000000</td>\n",
+              "      <td>43.000000</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "       symboling  wheel-base  ...   city-mpg  highway-mpg\n",
+              "count  10.000000   10.000000  ...  10.000000    10.000000\n",
+              "mean    0.600000   96.430000  ...  27.000000    32.800000\n",
+              "std     1.264911    2.959373  ...   6.411795     7.269418\n",
+              "min    -1.000000   93.700000  ...  16.000000    18.000000\n",
+              "25%     0.000000   93.900000  ...  24.000000    30.500000\n",
+              "50%     0.500000   96.000000  ...  27.000000    33.000000\n",
+              "75%     1.000000   97.125000  ...  31.000000    38.000000\n",
+              "max     3.000000  102.400000  ...  38.000000    43.000000\n",
+              "\n",
+              "[8 rows x 10 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 92
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Fo_5DmahRMTq",
+        "colab_type": "text"
+      },
+      "source": [
+        "1.  Null Hypothesis: Cars sold typically have a fuel efficiency of 35mpg.\n",
+        "2. Alternative Hypothesis: Cars are sold at some other fuel efficency that is not 35mpg.\n",
+        "\n",
+        "3. Confidence level: The confidence level will be  95% or we need a .5 p value or greater to accept the Null hypothesis."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Y4igG5q_4MB_",
+        "colab_type": "code",
+        "outputId": "d493a420-5920-4e76-bd16-387874c440b1",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "# Run a 1 Sample T test\n",
+        "# Here our expected for for null hypothesis mean is 35\n",
+        "\n",
+        "stats.ttest_1samp(df_sample['highway-mpg'],35)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Ttest_1sampResult(statistic=-0.9570244044334747, pvalue=0.36355472283248624)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 93
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "GvlWMAiPRH2l",
+        "colab_type": "text"
+      },
+      "source": [
+        "4. The P value is .36, which is greater that 0.05\n",
+        "5. Conclusion: Based on a statistic of -0.96 and a p value of 0.36, I fail  to reject the null hypothesis.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yAkyHaEnbNYa",
+        "colab_type": "text"
+      },
+      "source": [
+        "Imagine that you now have the capacity to test 100 cars on the lot. Using the same random state of `30`, what would you conclude when sampling 100 cars?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "unA_GQL7Hodd",
+        "colab_type": "code",
+        "outputId": "6cfcb950-8f90-4b7c-f1be-c44a7742ede9",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 296
+        }
+      },
+      "source": [
+        "df_sample2 = df.sample(100, random_state=30)\n",
+        "df_sample2.describe()"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>symboling</th>\n",
+              "      <th>wheel-base</th>\n",
+              "      <th>length</th>\n",
+              "      <th>width</th>\n",
+              "      <th>height</th>\n",
+              "      <th>curb-weight</th>\n",
+              "      <th>engine-size</th>\n",
+              "      <th>compression-ratio</th>\n",
+              "      <th>city-mpg</th>\n",
+              "      <th>highway-mpg</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>100.000000</td>\n",
+              "      <td>100.00000</td>\n",
+              "      <td>100.000000</td>\n",
+              "      <td>100.000000</td>\n",
+              "      <td>100.000000</td>\n",
+              "      <td>100.000000</td>\n",
+              "      <td>100.000000</td>\n",
+              "      <td>100.000000</td>\n",
+              "      <td>100.00000</td>\n",
+              "      <td>100.00000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>mean</th>\n",
+              "      <td>0.760000</td>\n",
+              "      <td>99.51100</td>\n",
+              "      <td>175.913000</td>\n",
+              "      <td>66.088000</td>\n",
+              "      <td>53.836000</td>\n",
+              "      <td>2611.930000</td>\n",
+              "      <td>129.430000</td>\n",
+              "      <td>10.773200</td>\n",
+              "      <td>25.20000</td>\n",
+              "      <td>30.64000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>std</th>\n",
+              "      <td>1.280152</td>\n",
+              "      <td>6.41247</td>\n",
+              "      <td>11.742968</td>\n",
+              "      <td>2.171686</td>\n",
+              "      <td>2.514022</td>\n",
+              "      <td>544.995251</td>\n",
+              "      <td>41.495346</td>\n",
+              "      <td>4.613091</td>\n",
+              "      <td>6.24904</td>\n",
+              "      <td>6.68863</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>min</th>\n",
+              "      <td>-2.000000</td>\n",
+              "      <td>88.60000</td>\n",
+              "      <td>150.000000</td>\n",
+              "      <td>62.500000</td>\n",
+              "      <td>48.800000</td>\n",
+              "      <td>1837.000000</td>\n",
+              "      <td>70.000000</td>\n",
+              "      <td>7.000000</td>\n",
+              "      <td>14.00000</td>\n",
+              "      <td>16.00000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>25%</th>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>95.10000</td>\n",
+              "      <td>168.400000</td>\n",
+              "      <td>64.200000</td>\n",
+              "      <td>52.000000</td>\n",
+              "      <td>2218.750000</td>\n",
+              "      <td>98.000000</td>\n",
+              "      <td>8.700000</td>\n",
+              "      <td>20.00000</td>\n",
+              "      <td>25.00000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>50%</th>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>97.20000</td>\n",
+              "      <td>173.550000</td>\n",
+              "      <td>65.550000</td>\n",
+              "      <td>54.100000</td>\n",
+              "      <td>2449.000000</td>\n",
+              "      <td>120.500000</td>\n",
+              "      <td>9.150000</td>\n",
+              "      <td>24.50000</td>\n",
+              "      <td>30.00000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>75%</th>\n",
+              "      <td>2.000000</td>\n",
+              "      <td>102.90000</td>\n",
+              "      <td>185.100000</td>\n",
+              "      <td>66.975000</td>\n",
+              "      <td>55.625000</td>\n",
+              "      <td>3042.750000</td>\n",
+              "      <td>146.000000</td>\n",
+              "      <td>9.400000</td>\n",
+              "      <td>30.00000</td>\n",
+              "      <td>34.50000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>max</th>\n",
+              "      <td>3.000000</td>\n",
+              "      <td>120.90000</td>\n",
+              "      <td>208.100000</td>\n",
+              "      <td>72.300000</td>\n",
+              "      <td>59.800000</td>\n",
+              "      <td>4066.000000</td>\n",
+              "      <td>308.000000</td>\n",
+              "      <td>23.000000</td>\n",
+              "      <td>45.00000</td>\n",
+              "      <td>50.00000</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "        symboling  wheel-base  ...   city-mpg  highway-mpg\n",
+              "count  100.000000   100.00000  ...  100.00000    100.00000\n",
+              "mean     0.760000    99.51100  ...   25.20000     30.64000\n",
+              "std      1.280152     6.41247  ...    6.24904      6.68863\n",
+              "min     -2.000000    88.60000  ...   14.00000     16.00000\n",
+              "25%      0.000000    95.10000  ...   20.00000     25.00000\n",
+              "50%      1.000000    97.20000  ...   24.50000     30.00000\n",
+              "75%      2.000000   102.90000  ...   30.00000     34.50000\n",
+              "max      3.000000   120.90000  ...   45.00000     50.00000\n",
+              "\n",
+              "[8 rows x 10 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 94
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "lwHzwbIQWkPE",
+        "colab_type": "text"
+      },
+      "source": [
+        "1.  Null Hypothesis: Cars sold typically have a fuel efficiency of 35mpg.\n",
+        "2. Alternative Hypothesis: Cars are sold at some other fuel efficency that is not 35mpg.\n",
+        "\n",
+        "3. Confidence level: The confidence level will be  95% or we need a .5 p value or greater to accept the Null hypothesis."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ULGTMlwNEfvz",
+        "colab_type": "code",
+        "outputId": "ba3015f3-8345-4557-af2f-39f7ea73511f",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "#Run A 1 sample T Test for 100 cars in the lot\n",
+        "# From descriptive statistics we get an average mean of 30.64\n",
+        "stats.ttest_1samp(df_sample2['highway-mpg'],35)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Ttest_1sampResult(statistic=-6.5185242467032305, pvalue=3.003137417468754e-09)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 74
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "sDO-ufMDfpVA",
+        "colab_type": "text"
+      },
+      "source": [
+        "Why might these two t-tests using the same dataset lead to different conclusions about the salesman's claim?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "e6Ofnz1NWmxV",
+        "colab_type": "text"
+      },
+      "source": [
+        "4. The  P value of 3.00 * e-09, which is less than 0.5\n",
+        "5. Conclusion: Based on a statistic of -6.518 and a p value of 3.00 * e-09 I eject the null hypothesis that cars are sold typically have a fuel efficiency. "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "TPT-ZTt0PuIk",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Practice 2-Sample T-tests\n",
+        "\n",
+        "Two Sample t-tests determine whether or not two sample means are statistically different from each other. \n",
+        "\n",
+        "This portion of your assignment requires you to determine which issues have \"statistically significant\" differences between political parties in this [1980s congressional voting data](https://archive.ics.uci.edu/ml/datasets/Congressional+Voting+Records). \n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "PvFVLwekQxLH",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1) Load the data\n",
+        "\n",
+        "The data consists of 435 instances (one for each congressperson), a class (democrat or republican), and 16 binary attributes (yes or no for voting for or against certain issues). Be aware - there are missing values!\n",
+        "\n",
+        "- Read the dataset in from UCI, you'll need to provide a list of column headers\n",
+        "- Encode \"yes\" votes as 1 and \"no\" votes as 0. (You can use `df.replace()` to swap out these values)\n",
+        "- Use dataframe filtering to split the dataframe into two new dataframes based on party. Hold all republicans in one dataframe and all democrats in the other. These will be our two different \"samples.\"\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "bCE3UgpbP69p",
+        "colab_type": "code",
+        "outputId": "2665e496-3258-4e7c-c95e-bf56bf9812d8",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 293
+        }
+      },
+      "source": [
+        "### YOUR WORK HERE\n",
+        "columns1 = ['party', 'handicapped-infants','water-project-cost-sharing',\n",
+        "          'adoption-of-the-budget-resolution','physician-fee-freeze', 'el-salvador-aid',\n",
+        "          'religious-groups-in-schools','anti-satellite-test-ban',\n",
+        "          'aid-to-nicaraguan-contras','mx-missile','immigration',\n",
+        "           'synfuels-corporation-cutback','education-spending',\n",
+        "           'superfund-right-to-sue','crime','duty-free-exports',\n",
+        "           'export-administration-act-south-africa']\n",
+        "df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/voting-records/house-votes-84.data', names = columns1)\n",
+        "print(df.shape)\n",
+        "print(df.head(), df.tail())\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "(435, 17)\n",
+            "        party  ... export-administration-act-south-africa\n",
+            "0  republican  ...                                      y\n",
+            "1  republican  ...                                      ?\n",
+            "2    democrat  ...                                      n\n",
+            "3    democrat  ...                                      y\n",
+            "4    democrat  ...                                      y\n",
+            "\n",
+            "[5 rows x 17 columns]           party  ... export-administration-act-south-africa\n",
+            "430  republican  ...                                      y\n",
+            "431    democrat  ...                                      y\n",
+            "432  republican  ...                                      y\n",
+            "433  republican  ...                                      y\n",
+            "434  republican  ...                                      n\n",
+            "\n",
+            "[5 rows x 17 columns]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "z7c7K322gLeN",
+        "colab_type": "code",
+        "outputId": "228e4754-2158-4a42-8c1a-1a45e543dbdc",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 483
+        }
+      },
+      "source": [
+        "### YOUR WORK HERE\n",
+        "#Convert ? to nana, and y,n votes into binary numbers of either 0 or 1\n",
+        "df = df.replace({'?':np.NaN, 'y':1, 'n':0})\n",
+        "\n",
+        "#check\n",
+        "print(df.head(), df.isnull().sum(), df['party'].value_counts())"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "        party  ...  export-administration-act-south-africa\n",
+            "0  republican  ...                                     1.0\n",
+            "1  republican  ...                                     NaN\n",
+            "2    democrat  ...                                     0.0\n",
+            "3    democrat  ...                                     1.0\n",
+            "4    democrat  ...                                     1.0\n",
+            "\n",
+            "[5 rows x 17 columns] party                                       0\n",
+            "handicapped-infants                        12\n",
+            "water-project-cost-sharing                 48\n",
+            "adoption-of-the-budget-resolution          11\n",
+            "physician-fee-freeze                       11\n",
+            "el-salvador-aid                            15\n",
+            "religious-groups-in-schools                11\n",
+            "anti-satellite-test-ban                    14\n",
+            "aid-to-nicaraguan-contras                  15\n",
+            "mx-missile                                 22\n",
+            "immigration                                 7\n",
+            "synfuels-corporation-cutback               21\n",
+            "education-spending                         31\n",
+            "superfund-right-to-sue                     25\n",
+            "crime                                      17\n",
+            "duty-free-exports                          28\n",
+            "export-administration-act-south-africa    104\n",
+            "dtype: int64 democrat      267\n",
+            "republican    168\n",
+            "Name: party, dtype: int64\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "f20v73e3RLAV",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 2) Perform two sample T-tests on different issues and report the results.\n",
+        "\n",
+        "- Find an issue that democrats support more than republicans with p < 0.01 (significant at the 99% level).\n",
+        "- Find an issue that republicans support more than democrats with p < 0.01 (significant at the 99% level).\n",
+        "- Find an issue where the difference between republicans and democrats has p > 0.1 (Not significant at the 90% level - i.e. there may not be much of a difference the two sample means)\n",
+        "\n",
+        "Please for each test that you run state your null and alternative hypothesis and then write a conclusion reflecting on the null and alternative hypothesis.\n",
+        "\n",
+        "Remember, that two-sample t-tests will only tell us if the two groups are *different* from one another. We'll have to look at their sample means directly or use the sign on the t-statistic to know which of the two sample means is larger. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "XderqdBoJhEi",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "dem = df[df['party'] =='democrat']\n",
+        "\n",
+        "rep = df[df['party'] == 'republican'] "
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PVRVbXR3bdPJ",
+        "colab_type": "code",
+        "outputId": "c887f9cf-3d57-46e6-ebe3-8ab76e9d26bb",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 367
+        }
+      },
+      "source": [
+        "dem.describe()"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>handicapped-infants</th>\n",
+              "      <th>water-project-cost-sharing</th>\n",
+              "      <th>adoption-of-the-budget-resolution</th>\n",
+              "      <th>physician-fee-freeze</th>\n",
+              "      <th>el-salvador-aid</th>\n",
+              "      <th>religious-groups-in-schools</th>\n",
+              "      <th>anti-satellite-test-ban</th>\n",
+              "      <th>aid-to-nicaraguan-contras</th>\n",
+              "      <th>mx-missile</th>\n",
+              "      <th>immigration</th>\n",
+              "      <th>synfuels-corporation-cutback</th>\n",
+              "      <th>education-spending</th>\n",
+              "      <th>superfund-right-to-sue</th>\n",
+              "      <th>crime</th>\n",
+              "      <th>duty-free-exports</th>\n",
+              "      <th>export-administration-act-south-africa</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>258.000000</td>\n",
+              "      <td>239.000000</td>\n",
+              "      <td>260.000000</td>\n",
+              "      <td>259.000000</td>\n",
+              "      <td>255.000000</td>\n",
+              "      <td>258.000000</td>\n",
+              "      <td>259.000000</td>\n",
+              "      <td>263.000000</td>\n",
+              "      <td>248.000000</td>\n",
+              "      <td>263.000000</td>\n",
+              "      <td>255.000000</td>\n",
+              "      <td>249.000000</td>\n",
+              "      <td>252.000000</td>\n",
+              "      <td>257.000000</td>\n",
+              "      <td>251.000000</td>\n",
+              "      <td>185.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>mean</th>\n",
+              "      <td>0.604651</td>\n",
+              "      <td>0.502092</td>\n",
+              "      <td>0.888462</td>\n",
+              "      <td>0.054054</td>\n",
+              "      <td>0.215686</td>\n",
+              "      <td>0.476744</td>\n",
+              "      <td>0.772201</td>\n",
+              "      <td>0.828897</td>\n",
+              "      <td>0.758065</td>\n",
+              "      <td>0.471483</td>\n",
+              "      <td>0.505882</td>\n",
+              "      <td>0.144578</td>\n",
+              "      <td>0.289683</td>\n",
+              "      <td>0.350195</td>\n",
+              "      <td>0.637450</td>\n",
+              "      <td>0.935135</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>std</th>\n",
+              "      <td>0.489876</td>\n",
+              "      <td>0.501045</td>\n",
+              "      <td>0.315405</td>\n",
+              "      <td>0.226562</td>\n",
+              "      <td>0.412106</td>\n",
+              "      <td>0.500430</td>\n",
+              "      <td>0.420224</td>\n",
+              "      <td>0.377317</td>\n",
+              "      <td>0.429121</td>\n",
+              "      <td>0.500138</td>\n",
+              "      <td>0.500949</td>\n",
+              "      <td>0.352383</td>\n",
+              "      <td>0.454518</td>\n",
+              "      <td>0.477962</td>\n",
+              "      <td>0.481697</td>\n",
+              "      <td>0.246956</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>min</th>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>25%</th>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>50%</th>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>75%</th>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>max</th>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "       handicapped-infants  ...  export-administration-act-south-africa\n",
+              "count           258.000000  ...                              185.000000\n",
+              "mean              0.604651  ...                                0.935135\n",
+              "std               0.489876  ...                                0.246956\n",
+              "min               0.000000  ...                                0.000000\n",
+              "25%               0.000000  ...                                1.000000\n",
+              "50%               1.000000  ...                                1.000000\n",
+              "75%               1.000000  ...                                1.000000\n",
+              "max               1.000000  ...                                1.000000\n",
+              "\n",
+              "[8 rows x 16 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 114
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "J-KExfK6bgUq",
+        "colab_type": "code",
+        "outputId": "6a075181-3a27-4f1f-aad9-23d2575d82e6",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 367
+        }
+      },
+      "source": [
+        "rep.describe()"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>handicapped-infants</th>\n",
+              "      <th>water-project-cost-sharing</th>\n",
+              "      <th>adoption-of-the-budget-resolution</th>\n",
+              "      <th>physician-fee-freeze</th>\n",
+              "      <th>el-salvador-aid</th>\n",
+              "      <th>religious-groups-in-schools</th>\n",
+              "      <th>anti-satellite-test-ban</th>\n",
+              "      <th>aid-to-nicaraguan-contras</th>\n",
+              "      <th>mx-missile</th>\n",
+              "      <th>immigration</th>\n",
+              "      <th>synfuels-corporation-cutback</th>\n",
+              "      <th>education-spending</th>\n",
+              "      <th>superfund-right-to-sue</th>\n",
+              "      <th>crime</th>\n",
+              "      <th>duty-free-exports</th>\n",
+              "      <th>export-administration-act-south-africa</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>165.000000</td>\n",
+              "      <td>148.000000</td>\n",
+              "      <td>164.000000</td>\n",
+              "      <td>165.000000</td>\n",
+              "      <td>165.000000</td>\n",
+              "      <td>166.000000</td>\n",
+              "      <td>162.000000</td>\n",
+              "      <td>157.000000</td>\n",
+              "      <td>165.000000</td>\n",
+              "      <td>165.000000</td>\n",
+              "      <td>159.000000</td>\n",
+              "      <td>155.000000</td>\n",
+              "      <td>158.000000</td>\n",
+              "      <td>161.000000</td>\n",
+              "      <td>156.000000</td>\n",
+              "      <td>146.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>mean</th>\n",
+              "      <td>0.187879</td>\n",
+              "      <td>0.506757</td>\n",
+              "      <td>0.134146</td>\n",
+              "      <td>0.987879</td>\n",
+              "      <td>0.951515</td>\n",
+              "      <td>0.897590</td>\n",
+              "      <td>0.240741</td>\n",
+              "      <td>0.152866</td>\n",
+              "      <td>0.115152</td>\n",
+              "      <td>0.557576</td>\n",
+              "      <td>0.132075</td>\n",
+              "      <td>0.870968</td>\n",
+              "      <td>0.860759</td>\n",
+              "      <td>0.981366</td>\n",
+              "      <td>0.089744</td>\n",
+              "      <td>0.657534</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>std</th>\n",
+              "      <td>0.391804</td>\n",
+              "      <td>0.501652</td>\n",
+              "      <td>0.341853</td>\n",
+              "      <td>0.109760</td>\n",
+              "      <td>0.215442</td>\n",
+              "      <td>0.304104</td>\n",
+              "      <td>0.428859</td>\n",
+              "      <td>0.361010</td>\n",
+              "      <td>0.320176</td>\n",
+              "      <td>0.498186</td>\n",
+              "      <td>0.339643</td>\n",
+              "      <td>0.336322</td>\n",
+              "      <td>0.347298</td>\n",
+              "      <td>0.135649</td>\n",
+              "      <td>0.286735</td>\n",
+              "      <td>0.476168</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>min</th>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>25%</th>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>50%</th>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>75%</th>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>0.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>max</th>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "      <td>1.000000</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "       handicapped-infants  ...  export-administration-act-south-africa\n",
+              "count           165.000000  ...                              146.000000\n",
+              "mean              0.187879  ...                                0.657534\n",
+              "std               0.391804  ...                                0.476168\n",
+              "min               0.000000  ...                                0.000000\n",
+              "25%               0.000000  ...                                0.000000\n",
+              "50%               0.000000  ...                                1.000000\n",
+              "75%               0.000000  ...                                1.000000\n",
+              "max               1.000000  ...                                1.000000\n",
+              "\n",
+              "[8 rows x 16 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 115
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "1VFdtEOZBbV1",
+        "colab_type": "text"
+      },
+      "source": [
+        "Looking at the numerical description of both parties we can see that democrats highly favored adoption of the budget resolution, having a mean of 89% yes votes.\n",
+        "And we can also see that republicans are against it, having a mean of 13%, of the ones who voted yed. This is the Issue i will use for problem 1."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "TQaoV8_MZxp0",
+        "colab_type": "text"
+      },
+      "source": [
+        "1. Null Hypothesis: Both parties support the adoption of the budget resolution bill at a similar percentage.\n",
+        "2. Alternative : Democrats support the adoption of the budget resolution bill more.\n",
+        "%\n",
+        "3. Confidence Level: 95%\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "MAApHD-peJjW",
+        "colab_type": "code",
+        "outputId": "a143d531-834e-4001-d439-f8318fd37fd8",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "#Run a two sample t test\n",
+        "stats.ttest_ind(dem['adoption-of-the-budget-resolution'], rep['adoption-of-the-budget-resolution'],nan_policy='omit')"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Ttest_indResult(statistic=23.21277691701378, pvalue=2.0703402795404463e-77)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 118
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SkgsCYPDac8C",
+        "colab_type": "text"
+      },
+      "source": [
+        "4. The p values is 1.994262314074344e-177)\n",
+        "5. Conclusion: Based on a statistic of 23.21 (positive) and a p values of 1.61* e-18 I reject the null hypothesis. I suggest the alternative, that the democrats support the bill more."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "BQchK6f3CMD1",
+        "colab_type": "text"
+      },
+      "source": [
+        "The numerical summaries also tell us that republicans highly favored physician fee-freeze, having an average mean of 99%. While democrats were highly against it, having an average mean of 5.4% of yes votes. This is the issue I will use for problem 2.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "z7prxbDRdsyi",
+        "colab_type": "text"
+      },
+      "source": [
+        "1. Hypothesis: Both parties support the physician fee-free bill.\n",
+        "2. Alternative: Republicans support the physician fee-freeze bill more.\n",
+        "3. Confidence level = 95%\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "WMKeBRaUJjie",
+        "colab_type": "code",
+        "outputId": "e291434b-5aa6-4170-e396-f1c189b8a6cd",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "# Run a two sample test \n",
+        "stats.ttest_ind(dem['physician-fee-freeze'], rep['physician-fee-freeze'],nan_policy='omit')"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Ttest_indResult(statistic=-49.36708157301406, pvalue=1.994262314074344e-177)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 117
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "vCsdMoh0eEFG",
+        "colab_type": "text"
+      },
+      "source": [
+        "4. The p values is 1.994262314074344e-177\n",
+        "5. Conclusion: Baed on a t statistic of -49.36 (negative suggesting more republicans support) and a p value of 1.99 e-177, I reject the null hypothesis and is suggest the alternative, which is that republicans support the bill more.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "AdUjNyEngEjg",
+        "colab_type": "text"
+      },
+      "source": [
+        "An issue that both republicans seem to agree on is the water-project-cost-sharing; where the average mean for democrats was 50% and and the average of yes votes for rupublicans was 51%. This is the issue I will use for problem 3.\n",
+        "\n",
+        "1. Null Hypothesis: Democrats and Republicans support the water-project cost sharing bill at a same rate.\n",
+        "\n",
+        "2. The alternative, is that both parties  accept the bill at different rates.\n",
+        "3. Confidence level 95%"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ZB054dw_eEPB",
+        "colab_type": "code",
+        "outputId": "edce5453-f2f5-4584-8510-20c8b1d468b7",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        }
+      },
+      "source": [
+        "print([stats.ttest_ind(dem['water-project-cost-sharing'], rep['water-project-cost-sharing'],nan_policy='omit')])"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[Ttest_indResult(statistic=-0.08896538137868286, pvalue=0.9291556823993485)]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "wGrKxdw8gkT-",
+        "colab_type": "text"
+      },
+      "source": [
+        "4. P value of .93\n",
+        "5. Based on a T statisitic of 0.089 and a p value of .929 I suggest the null hypthesis is true and both republicans and democrats support the bil\n",
+        "at a similar percentage."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "C5pkmOuKgK9Y",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Stretch Goals:\n",
+        "\n",
+        "### 1) Use functions and some iterator (for loop, .apply(), list comprehension, etc.) to perform two sample t-tests on every issue in the dataset in an automated fashion."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ZX5JU4TpppNl",
+        "colab_type": "code",
+        "outputId": "62a8d6e0-1872-4921-a6af-fe58be8ff17a",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 305
+        }
+      },
+      "source": [
+        "\n",
+        "all_sample_tests = []\n",
+        "bills = list(df)[1:]\n",
+        "\n",
+        "def two_ttest(x):\n",
+        "  x = stats.ttest_ind(dem[x], rep[x],nan_policy='omit')\n",
+        "  return x\n",
+        "\n",
+        "for bill in bills:\n",
+        "  all_sample_tests.append(two_ttest(bill))\n",
+        "all_sample_tests\n",
+        "\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[Ttest_indResult(statistic=9.205264294809222, pvalue=1.613440327937243e-18),\n",
+              " Ttest_indResult(statistic=-0.08896538137868286, pvalue=0.9291556823993485),\n",
+              " Ttest_indResult(statistic=23.21277691701378, pvalue=2.0703402795404463e-77),\n",
+              " Ttest_indResult(statistic=-49.36708157301406, pvalue=1.994262314074344e-177),\n",
+              " Ttest_indResult(statistic=-21.13669261173219, pvalue=5.600520111729011e-68),\n",
+              " Ttest_indResult(statistic=-9.737575825219457, pvalue=2.3936722520597287e-20),\n",
+              " Ttest_indResult(statistic=12.526187929077842, pvalue=8.521033017443867e-31),\n",
+              " Ttest_indResult(statistic=18.052093200819733, pvalue=2.82471841372357e-54),\n",
+              " Ttest_indResult(statistic=16.437503268542994, pvalue=5.03079265310811e-47),\n",
+              " Ttest_indResult(statistic=-1.7359117329695164, pvalue=0.08330248490425066),\n",
+              " Ttest_indResult(statistic=8.293603989407588, pvalue=1.5759322301054064e-15),\n",
+              " Ttest_indResult(statistic=-20.500685724563073, pvalue=1.8834203990450192e-64),\n",
+              " Ttest_indResult(statistic=-13.51064251060933, pvalue=1.2278581709672758e-34),\n",
+              " Ttest_indResult(statistic=-16.342085656197696, pvalue=9.952342705606092e-47),\n",
+              " Ttest_indResult(statistic=12.853146132542978, pvalue=5.997697174347365e-32),\n",
+              " Ttest_indResult(statistic=6.849454815841208, pvalue=3.652674361672226e-11)]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 147
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "wcA_AvvRAqW_",
+        "colab_type": "text"
+      },
+      "source": [
+        "\n",
+        "\n",
+        "### 2) Work on Performing a T-test without using Scipy in order to get \"under the hood\" and learn more thoroughly about this topic.\n",
+        "### Start with a 1-sample t-test\n",
+        " - Establish the conditions for your test \n",
+        " - [Calculate the T Statistic](https://blog.minitab.com/hs-fs/hubfs/Imported_Blog_Media/701f9c0efa98a38fb397f3c3ec459b66.png?width=247&height=172&name=701f9c0efa98a38fb397f3c3ec459b66.png) (You'll need to omit NaN values from your sample).\n",
+        " - Translate that t-statistic into a P-value. You can use a [table](https://www.google.com/search?q=t+statistic+table) or the [University of Iowa Applet](https://homepage.divms.uiowa.edu/~mbognar/applets/t.html)\n",
+        "\n",
+        "### Be sure to check your work using Scipy!\n",
+        "\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3pdMy-KoPjoM",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "### YOUR WORK HERE\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3114xDdlPjFx",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 3) Then try a 2-sample t-test\n",
+        " - Establish the conditions for your test \n",
+        " - [Calculate the T Statistic](https://lh3.googleusercontent.com/proxy/rJJ5ZOL9ZDvKOOeBihXoZDgfk7uv1YsRzSQ1Tc10RX-r2HrRpRLVqlE9CWX23csYQXcTniFwlBg3H-qR8MKJPBGnjwndqlhDX3JxoDE5Yg) (You'll need to omit NaN values from your sample).\n",
+        " - Translate that t-statistic into a P-value. You can use a [table](https://www.google.com/search?q=t+statistic+table) or the [University of Iowa Applet](https://homepage.divms.uiowa.edu/~mbognar/applets/t.html)\n",
+        "\n",
+        " ### Be sure to check your work using Scipy!"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dPmXOHh1Cfea",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "### YOUR WORK HERE"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
