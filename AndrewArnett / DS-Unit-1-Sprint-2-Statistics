@@ -3,7 +3,7 @@
   "nbformat_minor": 0,
   "metadata": {
     "colab": {
-      "name": "Copy of LS_DS_123_Confidence_Intervals_Assignment.ipynb",
+      "name": "_Bayesian_Inference_Intro_Assignment.ipynb",
       "provenance": [],
       "collapsed_sections": [],
       "include_colab_link": true
@@ -27,636 +27,13 @@
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "g_c3L9CeANiJ",
+        "id": "H7OLbevlbd_Z",
         "colab_type": "text"
       },
       "source": [
-        "## Confidence Intervals\n",
+        "# Lambda School Data Science Module 124\n",
         "\n",
-        "The following url can be used to access an abbreviated version of responses to Stack Overflow's 2018 Developer Survey. The original Survey had ~100k respondents but the data is quite dirty so I have selected a cleaner subset of it for you to use for your assignment.\n",
-        "\n",
-        "<https://raw.githubusercontent.com/ryanleeallred/datasets/master/bootcampers.csv>\n",
-        "\n",
-        "The provided dataset holds 14 columns of information about individuals who make less than 500k per year and who responded that they had: \n",
-        "\n",
-        "\"Participated in a full-time developer training program or bootcamp\"\n",
-        "\n",
-        "## Part 1 - Setting the Stage\n",
-        "\n",
-        "**1) Load the dataset**"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "yXwMJQGrAIbO",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        "import pandas as pd\n",
-        "import numpy as np\n",
-        "from scipy import stats\n",
-        "import matplotlib.pyplot as plt"
-      ],
-      "execution_count": 0,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "pYsFvm1dPygj",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 547
-        },
-        "outputId": "cf72cfcb-6aaa-4d6a-e0d7-d2ce53765f12"
-      },
-      "source": [
-        "df = pd.read_csv('https://raw.githubusercontent.com/ryanleeallred/datasets/master/bootcampers.csv')\n",
-        "\n",
-        "print(df.shape)\n",
-        "df.head()"
-      ],
-      "execution_count": 4,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "(2761, 15)\n"
-          ],
-          "name": "stdout"
-        },
-        {
-          "output_type": "execute_result",
-          "data": {
-            "text/html": [
-              "<div>\n",
-              "<style scoped>\n",
-              "    .dataframe tbody tr th:only-of-type {\n",
-              "        vertical-align: middle;\n",
-              "    }\n",
-              "\n",
-              "    .dataframe tbody tr th {\n",
-              "        vertical-align: top;\n",
-              "    }\n",
-              "\n",
-              "    .dataframe thead th {\n",
-              "        text-align: right;\n",
-              "    }\n",
-              "</style>\n",
-              "<table border=\"1\" class=\"dataframe\">\n",
-              "  <thead>\n",
-              "    <tr style=\"text-align: right;\">\n",
-              "      <th></th>\n",
-              "      <th>Unnamed: 0</th>\n",
-              "      <th>Student</th>\n",
-              "      <th>Employment</th>\n",
-              "      <th>UndergradMajor</th>\n",
-              "      <th>DevType</th>\n",
-              "      <th>YearsCoding</th>\n",
-              "      <th>YearsCodingProf</th>\n",
-              "      <th>ConvertedSalary</th>\n",
-              "      <th>EducationTypes</th>\n",
-              "      <th>SelfTaughtTypes</th>\n",
-              "      <th>TimeAfterBootcamp</th>\n",
-              "      <th>LanguageWorkedWith</th>\n",
-              "      <th>Gender</th>\n",
-              "      <th>Age</th>\n",
-              "      <th>RaceEthnicity</th>\n",
-              "    </tr>\n",
-              "  </thead>\n",
-              "  <tbody>\n",
-              "    <tr>\n",
-              "      <th>0</th>\n",
-              "      <td>62</td>\n",
-              "      <td>No</td>\n",
-              "      <td>Employed full-time</td>\n",
-              "      <td>Computer science, computer engineering, or sof...</td>\n",
-              "      <td>Back-end developer;Data scientist or machine l...</td>\n",
-              "      <td>12-14 years</td>\n",
-              "      <td>6-8 years</td>\n",
-              "      <td>120000.0</td>\n",
-              "      <td>Taken an online course in programming or softw...</td>\n",
-              "      <td>The official documentation and/or standards fo...</td>\n",
-              "      <td>I already had a full-time job as a developer w...</td>\n",
-              "      <td>C;F#;Haskell;Python;Scala</td>\n",
-              "      <td>Male</td>\n",
-              "      <td>25 - 34 years old</td>\n",
-              "      <td>White or of European descent</td>\n",
-              "    </tr>\n",
-              "    <tr>\n",
-              "      <th>1</th>\n",
-              "      <td>73</td>\n",
-              "      <td>No</td>\n",
-              "      <td>Employed full-time</td>\n",
-              "      <td>A humanities discipline (ex. literature, histo...</td>\n",
-              "      <td>Back-end developer;Full-stack developer;System...</td>\n",
-              "      <td>0-2 years</td>\n",
-              "      <td>0-2 years</td>\n",
-              "      <td>36000.0</td>\n",
-              "      <td>Participated in a full-time developer training...</td>\n",
-              "      <td>The official documentation and/or standards fo...</td>\n",
-              "      <td>Four to six months</td>\n",
-              "      <td>Java;JavaScript;SQL;HTML;CSS;Bash/Shell</td>\n",
-              "      <td>Male</td>\n",
-              "      <td>25 - 34 years old</td>\n",
-              "      <td>White or of European descent</td>\n",
-              "    </tr>\n",
-              "    <tr>\n",
-              "      <th>2</th>\n",
-              "      <td>127</td>\n",
-              "      <td>Yes, full-time</td>\n",
-              "      <td>Employed full-time</td>\n",
-              "      <td>A business discipline (ex. accounting, finance...</td>\n",
-              "      <td>Full-stack developer</td>\n",
-              "      <td>3-5 years</td>\n",
-              "      <td>3-5 years</td>\n",
-              "      <td>59980.0</td>\n",
-              "      <td>Taken an online course in programming or softw...</td>\n",
-              "      <td>The official documentation and/or standards fo...</td>\n",
-              "      <td>One to three months</td>\n",
-              "      <td>C#;JavaScript;TypeScript;HTML;CSS</td>\n",
-              "      <td>Male</td>\n",
-              "      <td>25 - 34 years old</td>\n",
-              "      <td>East Asian</td>\n",
-              "    </tr>\n",
-              "    <tr>\n",
-              "      <th>3</th>\n",
-              "      <td>140</td>\n",
-              "      <td>No</td>\n",
-              "      <td>Employed full-time</td>\n",
-              "      <td>A social science (ex. anthropology, psychology...</td>\n",
-              "      <td>Data scientist or machine learning specialist;...</td>\n",
-              "      <td>9-11 years</td>\n",
-              "      <td>3-5 years</td>\n",
-              "      <td>70000.0</td>\n",
-              "      <td>Taken an online course in programming or softw...</td>\n",
-              "      <td>Questions &amp; answers on Stack Overflow;Tapping ...</td>\n",
-              "      <td>I haven’t gotten a developer job</td>\n",
-              "      <td>JavaScript;Python;SQL;VBA</td>\n",
-              "      <td>Male</td>\n",
-              "      <td>25 - 34 years old</td>\n",
-              "      <td>White or of European descent</td>\n",
-              "    </tr>\n",
-              "    <tr>\n",
-              "      <th>4</th>\n",
-              "      <td>153</td>\n",
-              "      <td>No</td>\n",
-              "      <td>Employed full-time</td>\n",
-              "      <td>Computer science, computer engineering, or sof...</td>\n",
-              "      <td>Mobile developer</td>\n",
-              "      <td>6-8 years</td>\n",
-              "      <td>3-5 years</td>\n",
-              "      <td>105000.0</td>\n",
-              "      <td>Taken an online course in programming or softw...</td>\n",
-              "      <td>The official documentation and/or standards fo...</td>\n",
-              "      <td>One to three months</td>\n",
-              "      <td>C;Java;JavaScript;Objective-C;PHP;Python;Ruby;...</td>\n",
-              "      <td>Male</td>\n",
-              "      <td>25 - 34 years old</td>\n",
-              "      <td>White or of European descent</td>\n",
-              "    </tr>\n",
-              "  </tbody>\n",
-              "</table>\n",
-              "</div>"
-            ],
-            "text/plain": [
-              "   Unnamed: 0         Student  ...                Age                 RaceEthnicity\n",
-              "0          62              No  ...  25 - 34 years old  White or of European descent\n",
-              "1          73              No  ...  25 - 34 years old  White or of European descent\n",
-              "2         127  Yes, full-time  ...  25 - 34 years old                    East Asian\n",
-              "3         140              No  ...  25 - 34 years old  White or of European descent\n",
-              "4         153              No  ...  25 - 34 years old  White or of European descent\n",
-              "\n",
-              "[5 rows x 15 columns]"
-            ]
-          },
-          "metadata": {
-            "tags": []
-          },
-          "execution_count": 4
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "wOQ-9E8uYcni",
-        "colab_type": "text"
-      },
-      "source": [
-        "**2) Select two random samples from this dataset, one with a sample size of 20 and the other with a sample size of 200. (Use a `random_state` of `42` when selecting the samples)**"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "m1vuFGxVQo64",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        "sample1 = df.sample(20, random_state=42)\n",
-        "\n",
-        "sample2 = df.sample(200, random_state=42)"
-      ],
-      "execution_count": 0,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "y2Rz-8O-YmF9",
-        "colab_type": "text"
-      },
-      "source": [
-        "**3) Calculate and report the sample means of the `ConvertedSalary` column for both of the samples.**"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "ti9x37XSQ_yL",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 51
-        },
-        "outputId": "a3b08390-769e-486e-d4d2-b4847f4b2f89"
-      },
-      "source": [
-        "print(sample1['ConvertedSalary'].mean())\n",
-        "print(sample2['ConvertedSalary'].mean())"
-      ],
-      "execution_count": 9,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "55752.2\n",
-            "68551.255\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "AtGASqgxYp5t",
-        "colab_type": "text"
-      },
-      "source": [
-        "**4) Both of these sample means are estimates of an underlying population value. Which sample mean do you trust more? Why? Would a non-technical audience have any idea about which of these values is more trustworthy?**"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "8oD8lp84YyvU",
-        "colab_type": "text"
-      },
-      "source": [
-        "I would trust the sample of 200 more, as you increase your sample size you decrease your standard deviation.\n",
-        "\n",
-        "For a non-technical audience the large size would have a smaller margin of error therefore would be more trusworthy."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "-2ulIAGmYudp",
-        "colab_type": "text"
-      },
-      "source": [
-        "**5) Does just the point estimate (individual value of the sample mean) indicate to you anything about how much sampling error there could be with these estimates?**"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "hD5HloatYxoh",
-        "colab_type": "text"
-      },
-      "source": [
-        "The sampling error could be pretty large as the 200 person sample has a mean 23% higher than the 20 person sample."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "SpqgKQfTYvF0",
-        "colab_type": "text"
-      },
-      "source": [
-        "**6) What strategies could we use when reporting these numbers to not only report our estimates but also to give non-technical readers an idea about how far off our estimates might be due to sampling error?**\n",
-        "\n"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "h7N1WnTTYyD7",
-        "colab_type": "text"
-      },
-      "source": [
-        "This is where adding in margin of error comes into play, so non-technical readers know how much higher or lower the mean could be."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "9tIHBlM_SyGR",
-        "colab_type": "text"
-      },
-      "source": [
-        "## Part 2 - Reporting CIs / MOEs along with our point estimates for more context.\n",
-        "\n",
-        "**1) Calculate and report a 95% confidence interval around both of the sample means from part 1.**\n",
-        "\n"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "hfCO0gHEUOrE",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        "def confidence_interval(data, confidence=.95):\n",
-        "  sample = np.array(data)\n",
-        "  x_bar = sample.mean()\n",
-        "  s = np.std(sample, ddof=1)\n",
-        "  n = len(sample)\n",
-        "  t = stats.t.ppf((1+confidence) / 2, n-1)\n",
-        "  std_err = s / np.sqrt(n)\n",
-        "  moe = std_err * t\n",
-        "  upper = x_bar + moe\n",
-        "  lower = x_bar - moe\n",
-        "\n",
-        "  return (lower, x_bar, upper)"
-      ],
-      "execution_count": 0,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "r5OqA6GYUbUZ",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 34
-        },
-        "outputId": "ca34a7b5-c19e-4d6e-cfcd-02304a601e03"
-      },
-      "source": [
-        "confidence_interval(sample1['ConvertedSalary'])"
-      ],
-      "execution_count": 11,
-      "outputs": [
-        {
-          "output_type": "execute_result",
-          "data": {
-            "text/plain": [
-              "(35805.10309625536, 55752.2, 75699.29690374463)"
-            ]
-          },
-          "metadata": {
-            "tags": []
-          },
-          "execution_count": 11
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "kvtuhUzzUlqH",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 34
-        },
-        "outputId": "fccffbef-ccf1-4402-ef92-896ca9b543ef"
-      },
-      "source": [
-        "confidence_interval(sample2['ConvertedSalary'])"
-      ],
-      "execution_count": 12,
-      "outputs": [
-        {
-          "output_type": "execute_result",
-          "data": {
-            "text/plain": [
-              "(60593.058804479086, 68551.255, 76509.45119552092)"
-            ]
-          },
-          "metadata": {
-            "tags": []
-          },
-          "execution_count": 12
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "vdiW7DHRZwK-",
-        "colab_type": "text"
-      },
-      "source": [
-        "**2) Which confidence interval is wider and why?**"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "p5KGlyvYZ1Qq",
-        "colab_type": "text"
-      },
-      "source": [
-        "The confidence interval of the first sample is much wider. Due to its lower sample size the standard error of our estimate is much larger causing the potential distribution of sample means to be much more spread out. A confidence interval catches 95% of this theoretical distriution of sample means so if our standard error is larger, our confidence interval will be wider as well."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "6N33K4NvZ13H",
-        "colab_type": "text"
-      },
-      "source": [
-        "**3) Report the mean and the margin of error for both of the sample means. What does the Margin of Error Represent?**"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "MfMIBftMU_rz",
-        "colab_type": "code",
-        "colab": {}
-      },
-      "source": [
-        "CI1 = confidence_interval(sample1['ConvertedSalary'])\n",
-        "CI2 = confidence_interval(sample2['ConvertedSalary'])"
-      ],
-      "execution_count": 0,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "DOJ41W1tVWa6",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 136
-        },
-        "outputId": "82eaa0ad-493d-44d8-d5aa-cd797c7233fe"
-      },
-      "source": [
-        "print(\"Converted Salary Estimate 1\")\n",
-        "print(\"Mean:\", CI1[1])\n",
-        "print(\"MOE:\", CI1[2]-CI1[1], '\\n')\n",
-        "\n",
-        "print(\"Converted Salary Estimate 2\")\n",
-        "print(\"Mean:\", CI2[1])\n",
-        "print(\"MOE:\", CI2[2]-CI2[1])"
-      ],
-      "execution_count": 40,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "text": [
-            "Converted Salary Estimate 1\n",
-            "Mean: 55752.2\n",
-            "MOE: 19947.096903744634 \n",
-            "\n",
-            "Converted Salary Estimate 2\n",
-            "Mean: 68551.255\n",
-            "MOE: 7958.196195520912\n"
-          ],
-          "name": "stdout"
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "_7NuYtHfaQav",
-        "colab_type": "text"
-      },
-      "source": [
-        "The margin of error gives an idea of how far off our estimates might be (with 95% confidence). We're trying to supply a plausible range for our parameter of interest (the true average salary of bootcamp grads)."
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "zkg9EW9KTgGv",
-        "colab_type": "text"
-      },
-      "source": [
-        "## Part 3 - Communicate the Precision of Sample Estimates Graphically\n",
-        "\n",
-        "**1) Create a plot using `plt.errorbar` that compares both of the confidence intervals.** "
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "UE1fxaoKW1Xg",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 296
-        },
-        "outputId": "21f614f2-c0e3-4768-9a71-773ed133bf30"
-      },
-      "source": [
-        "plt.errorbar(x=0, y=CI1[1], yerr=(CI1[2]-CI1[1]), fmt='o')\n",
-        "plt.errorbar(x=1, y=CI2[1], yerr=(CI2[2]-CI2[1]), fmt='o')\n",
-        "plt.title('95% confidence intervals for \\n average converted salary')\n",
-        "plt.xticks(ticks=[0,1], labels=['sample 1', 'sample 2'])\n",
-        "plt.xlim(-1, 2)\n",
-        "plt.show()"
-      ],
-      "execution_count": 41,
-      "outputs": [
-        {
-          "output_type": "display_data",
-          "data": {
-            "image/png": "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\n",
-            "text/plain": [
-              "<Figure size 432x288 with 1 Axes>"
-            ]
-          },
-          "metadata": {
-            "tags": [],
-            "needs_background": "light"
-          }
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "HsTtONTNawFi",
-        "colab_type": "text"
-      },
-      "source": [
-        "**2) Create a plot using `plt.bar` that compares both of the confidence intervals.**"
-      ]
-    },
-    {
-      "cell_type": "code",
-      "metadata": {
-        "id": "2QOQGVfsVfFZ",
-        "colab_type": "code",
-        "colab": {
-          "base_uri": "https://localhost:8080/",
-          "height": 296
-        },
-        "outputId": "d9394ea5-d7e9-470d-82fd-14cdea431641"
-      },
-      "source": [
-        "plt.bar(x=0, height=CI1[1], yerr=(CI1[2]-CI1[1]))\n",
-        "plt.bar(x=1, height=CI2[1], yerr=(CI2[2]-CI2[1]))\n",
-        "plt.title('95% confidence intervals for \\n average converted salary')\n",
-        "plt.xticks(ticks=[0,1], labels=['sample 1', 'sample 2'])\n",
-        "plt.show()"
-      ],
-      "execution_count": 42,
-      "outputs": [
-        {
-          "output_type": "display_data",
-          "data": {
-            "image/png": "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\n",
-            "text/plain": [
-              "<Figure size 432x288 with 1 Axes>"
-            ]
-          },
-          "metadata": {
-            "tags": [],
-            "needs_background": "light"
-          }
-        }
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
-        "id": "ZGCzS-BFctob",
-        "colab_type": "text"
-      },
-      "source": [
-        "## Part 4 - Check for Understanding\n",
-        "\n",
-        "\n",
-        "\n",
+        "## Introduction to Bayesian Inference\n",
         "\n",
         "\n"
       ]
@@ -664,114 +41,435 @@
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "E181afPXezJ9",
+        "id": "P-DzzRk5bf0z",
         "colab_type": "text"
       },
       "source": [
-        "**Calculate a Confidence Interval using the entire dataset. How precise do our estimates get?**"
+        "## Assignment - Code it up!\n",
+        "\n",
+        "We used pure math to apply Bayes Theorem to drug tests. Now write Python code to reproduce the results! This is purposefully open ended - you'll have to think about how you should represent probabilities and events. You can and should look things up.\n",
+        "\n",
+        "Specific goals/targets:\n",
+        "\n",
+        "### 1) Write a function \n",
+        "\n",
+        "`def prob_drunk_given_positive(prob_drunk_prior, false_positive_rate, true_positive_rate):` \n",
+        "\n",
+        "You should only truly need these three values in order to apply Bayes Theorem. In this example, imagine that individuals are taking a breathalyzer test with an 8% false positive rate, a 100% true positive rate, and that our prior belief about drunk driving in the population is 1/1000. \n",
+        " - What is the probability that a person is drunk after one positive breathalyzer test?\n",
+        " - What is the probability that a person is drunk after two positive breathalyzer tests?\n",
+        " - How many positive breathalyzer tests are needed in order to have a probability that's greater than 95% that a person is drunk beyond the legal limit?\n"
       ]
     },
     {
       "cell_type": "code",
       "metadata": {
-        "id": "3puy99D6esLn",
+        "id": "xpVhZyUnbf7o",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# TODO - code!\n",
+        "def prob_drunk_given_positive(prob_drunk_prior, false_positive_rate, true_positive_rate):\n",
+        "\n",
+        "  prob_drunk_prior = .001\n",
+        "  false_positive_rate = .08\n",
+        "  true_positive_rate = 1\n",
+        "  prob_not_drunk = 1 - prob_drunk_prior\n",
+        "\n",
+        "  numerator = true_positive_rate*prob_drunk_prior\n",
+        "  denominator = true_positive_rate*prob_drunk_prior + false_positive_rate*prob_not_drunk\n",
+        "  posterior_probability = numerator / denominator\n",
+        "\n",
+        "  return ()\n",
+        "\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "AmusTqfa96-Y",
         "colab_type": "code",
         "colab": {
           "base_uri": "https://localhost:8080/",
-          "height": 68
+          "height": 163
         },
-        "outputId": "4139a103-b817-455f-daf8-a118f9c918a7"
+        "outputId": "a3bcf6bd-84eb-42b7-ef40-cc56df68bd66"
       },
       "source": [
-        "CI3 = confidence_interval(df['ConvertedSalary'])\n",
-        "\n",
-        "print(\"Converted Salary Estimate 3\")\n",
-        "print(\"Mean:\", CI3[1])\n",
-        "print(\"MOE:\", CI3[2]-CI3[1],)\n"
+        "prob_drunk_given_positive(posterior_probability)"
       ],
-      "execution_count": 39,
+      "execution_count": 6,
       "outputs": [
         {
-          "output_type": "stream",
-          "text": [
-            "Converted Salary Estimate 3\n",
-            "Mean: 73453.40420137631\n",
-            "MOE: 2153.574339128463\n"
-          ],
-          "name": "stdout"
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-6-6e1fc6c9a870>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprob_drunk_given_positive\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mposterior_probability\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'posterior_probability' is not defined"
+          ]
         }
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "u4FzrYAd0o8h",
+        "id": "nhOAsLjvCSLF",
         "colab_type": "text"
       },
       "source": [
-        "The margine of error is much smaller than either of the samples which means our precision is much better."
+        "### 2) In your own words, summarize the difference between Bayesian and Frequentist statistics\n",
+        "\n",
+        "If you're unsure where to start, check out [this blog post of Bayes theorem with Python](https://dataconomy.com/2015/02/introduction-to-bayes-theorem-with-python/)."
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "wbA0inEKexdW",
+        "id": "AADlIVfgDztY",
         "colab_type": "text"
       },
       "source": [
-        "**What does \"precision\" mean in the context of statistical estimates and how is that different from \"accuracy?\"**"
+        "Bayesian statistics take a prior probability and update it with new information until it reaches the true value.\n",
+        "\n",
+        "Frequentist statistics estimate the population value using a sample of the population. The bigger the sample size the better."
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "Btl5phUUd6L4",
+        "id": "AeAGBxWjCTv3",
         "colab_type": "text"
       },
       "source": [
-        "precision is the size of the margin of error, while accuracy is how close the sample mean is to the actual population mean."
+        "### 3) Use the following Template to help come up with ideas for your Build Sprint Project: \n",
+        "\n"
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "4F-4ux7sd5pL",
+        "id": "YgIaBr__C5Q2",
         "colab_type": "text"
       },
       "source": [
-        "**It is very common to misunderstand what is captured by a 95% confidence interval. What is the correct interpretation? ([Hint](https://www.statisticssolutions.com/misconceptions-about-confidence-intervals/))**"
+        "\n",
+        "\n",
+        "## Idea 1: How turnovers affect the outcome of football games."
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "bSU07naHd6li",
+        "id": "MwR6hTB1CiLR",
         "colab_type": "text"
       },
       "source": [
-        "A 95% confidence interval means, that when you take a sample of the population, the estimate of the mean you get from that sample will fall into the actual population range 95% of the time."
+        "### You\n",
+        "What do you care about?\n",
+        "\n",
+        "What do you know about?\n",
+        "\n",
+        "What decisions do you face?\n",
+        "\n",
+        "\n"
       ]
     },
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "cvtnsGLJa4bW",
+        "id": "d5owPwlSClm2",
         "colab_type": "text"
       },
       "source": [
-        "# Stretch Goals:\n",
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "lorLHSkzClzC",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Seven templates\n",
+        "Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explains the seven templates from Priceonomics.\n",
         "\n",
-        "1) Study the relationship between t-tests and confidence intervals.\n",
-        " - Find a sample mean that we have worked with and construct a 95% confidence interval around it. (find the lower and upper bounds)\n",
-        " - Run a 1-sample t-test with the null hypothesis value being just barely **outside** of the confidence interval. What is the p-value?\n",
-        " - Run a 1-sample t-test with the null hypothesis value being just barely **inside** of the confidence interval. What is the p-value?\n",
+        "Can you apply the templates to your topics?\n",
         "\n",
-        "  What does it mean when we say that the boundaries of the confidence interval are the boundaries of statistical significance in a 1-sample t-test?\n",
+        "**Geographic Variation:**\n",
         "\n",
+        "**Trend related to the news:**\n",
         "\n",
-        "2) Go back to our [congressional voting dataset](https://archive.ics.uci.edu/ml/datasets/Congressional+Voting+Records) and build confidence intervals around the means of all of the issues for a single party. Compare all of those confidence intervals graphically on a single graph. \n",
+        "**Who does that?:**\n",
         "\n",
-        "3) Dive deeper into the [2018 Stack Overflow Survey](https://www.kaggle.com/stackoverflow/stack-overflow-2018-developer-survey) results to see what cool things you can find."
+        "**Answering a question people care about:**\n",
+        "\n",
+        "**Valuable to businesses:**\n",
+        "\n",
+        "**What's the most popular?:**\n",
+        "\n",
+        "**Cost/Money rankings:**"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "cjxeN9D7Cygt",
+        "colab_type": "text"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3OXCCIT6C_p0",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Misconceptions\n",
+        "\n",
+        "What misconceptions do people have about your topic?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "kZAkrgTUDCjF",
+        "colab_type": "text"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3tNrndE9DD3-",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Examples\n",
+        "\n",
+        "What data storytelling example inspires you?\n",
+        "\n",
+        "Could you do a new hypothesis, for the same question?\n",
+        "\n",
+        "Could you do a new question, for the same topic?\n",
+        "\n",
+        "Could you do a new topic, with the same \"style\"?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "-5NsWQy5DKoR",
+        "colab_type": "text"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9rPtMFB6DN7B",
+        "colab_type": "text"
+      },
+      "source": [
+        "###Data\n",
+        "\n",
+        "Where could you search for data about your topic?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "s9hqjOlhDTDa",
+        "colab_type": "text"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "ld5MOaFaDVSK"
+      },
+      "source": [
+        "---\n",
+        "\n",
+        "## Idea 2: Covids effect on the restaurant industry"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "znhTWIlUDVSM"
+      },
+      "source": [
+        "### You\n",
+        "What do you care about?\n",
+        "\n",
+        "What do you know about?\n",
+        "\n",
+        "What decisions do you face?\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "3Gln5mYeDVSM"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "W-njBredDVSN"
+      },
+      "source": [
+        "### Seven templates\n",
+        "Training Kit (https://learn.lambdaschool.com/ds/module/recedjanlbpqxic2r) explains the seven templates from Priceonomics.\n",
+        "\n",
+        "Can you apply the templates to your topics?\n",
+        "\n",
+        "**Geographic Variation:**\n",
+        "\n",
+        "**Trend related to the news:**\n",
+        "\n",
+        "**Who does that?:**\n",
+        "\n",
+        "**Answering a question people care about:**\n",
+        "\n",
+        "**Valuable to businesses:**\n",
+        "\n",
+        "**What's the most popular?:**\n",
+        "\n",
+        "**Cost/Money rankings:**"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "pkOqHHL3DVSN"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "njLQ3hLuDVSO"
+      },
+      "source": [
+        "### Misconceptions\n",
+        "\n",
+        "What misconceptions do people have about your topic?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "IzrUvaKeDVSO"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "L0X6X5WaDVSP"
+      },
+      "source": [
+        "### Examples\n",
+        "\n",
+        "What data storytelling example inspires you?\n",
+        "\n",
+        "Could you do a new hypothesis, for the same question?\n",
+        "\n",
+        "Could you do a new question, for the same topic?\n",
+        "\n",
+        "Could you do a new topic, with the same \"style\"?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "fDdHExa0DVSP"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "colab_type": "text",
+        "id": "CxgSpiwYDVSQ"
+      },
+      "source": [
+        "###Data\n",
+        "\n",
+        "Where could you search for data about your topic?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "uWgWjp3PQ3Sq",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Resources"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QRgHqmYIQ9qn",
+        "colab_type": "text"
+      },
+      "source": [
+        "- [Worked example of Bayes rule calculation](https://en.wikipedia.org/wiki/Bayes'_theorem#Examples) (helpful as it fully breaks out the denominator)\n",
+        "- [Source code for mvsdist in scipy](https://github.com/scipy/scipy/blob/90534919e139d2a81c24bf08341734ff41a3db12/scipy/stats/morestats.py#L139)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "GP7Jv1XvwtkX",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Stretch Goals:\n",
+        "\n",
+        "- Go back and study the content from Modules 1 & 2 & 3 to make sure that you're really comfortable with them.\n",
+        "- Apply a Bayesian technique to a problem you previously worked (in an assignment or project work) on from a frequentist (standard) perspective\n",
+        "- Check out [PyMC3](https://docs.pymc.io/) (note this goes beyond hypothesis tests into modeling) - read the guides and work through some examples\n",
+        "- Take PyMC3 further - see if you can build something with it!"
       ]
     }
   ]
