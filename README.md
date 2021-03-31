@@ -2,7 +2,7 @@
 
 ## Sprint 2: Statistics
 
-In the repository, you will find Warm-up Activities, Guided Projects (lectures) and Module Projects (assignment) for each module.
+In the repository, you will find Warm-up Activities, Guided Projects (lectures) and Module Projects (assignment) for each module.  There is also a study guide to help you preapare for the Sprint Challenge.
 
 ### Import note about autograding
 
